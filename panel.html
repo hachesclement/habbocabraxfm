@@ -92,59 +92,10 @@ button{
 
 <script>
 
-const supabase = window.supabase.createClient(
-    "https://vktxipqgizwkcnuwwbrm.supabase.co",
-    "sb_publishable_zskffegzDIf11N7qkGSdqg_WmUdGrde"
-);
+alert("JavaScript cargado");
 
-let nombreDJ = "";
-
-async function loginDJ(){
-
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-
-    const { data, error } =
-    await supabase.auth.signInWithPassword({
-        email,
-        password
-    });
-
-    if(error){
-        document.getElementById("mensaje").innerHTML =
-        "❌ Usuario o contraseña incorrectos";
-        return;
-    }
-
-    nombreDJ = email.split("@")[0];
-
-    document.getElementById("mensaje").innerHTML =
-    "✅ Acceso correcto";
-
-    document.getElementById("usuarioConectado").innerHTML =
-    "Conectado como: " + nombreDJ;
-
-    document.getElementById("controlPanel").style.display = "block";
-}
-
-async function ponerseEnDirecto(){
-
-    const { error } = await supabase
-    .from("emision")
-    .update({
-        dj_actual: nombreDJ,
-        estado: "online"
-    })
-    .eq("id",1);
-
-    if(error){
-
-        alert("Error al actualizar");
-
-        return;
-    }
-
-    alert("DJ puesto en directo");
+function loginDJ(){
+    alert("Botón funciona");
 }
 
 </script>
