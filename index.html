@@ -9,196 +9,185 @@
 
 <style>
 
-body {
-    margin: 0;
-    background: #050b18;
-    font-family: Arial, Helvetica, sans-serif;
-    color: white;
+body{
+    margin:0;
+    background:#0b1528;
+    font-family:Verdana, Arial, sans-serif;
+    color:#fff;
 }
 
-.contenedor {
-    max-width: 1100px;
-    margin: auto;
-    padding: 20px;
+.contenedor{
+    max-width:1100px;
+    margin:auto;
 }
 
-.banner {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 30px;
-}
+/* BANNER */
 
-.banner img {
-    width: 85%;
-    max-width: 1000px;
-    height: auto;
-}
-
-
-.bloque {
-    background: #082040;
-    border: 1px solid #0e3a6d;
-    border-radius: 15px;
-    padding: 25px;
-    margin: 25px auto;
-    text-align: center;
-    box-shadow: 0 0 20px rgba(0,150,255,.2);
-}
-
-
-h2 {
-    color: #49b8ff;
-    margin-top: 0;
-}
-
-
-.reproductor {
-    max-width: 450px;
-    margin: auto;
-}
-
-
-.footer {
+.banner{
     text-align:center;
-    margin-top:40px;
-    padding:20px;
-    color:#888;
+    background:#06101f;
 }
 
-
-.zona-radio {
-    display:flex;
-    gap:25px;
-    align-items:stretch;
-}
-
-
-.zona-radio .bloque {
-    flex:1;
-}
-
-
-@media(max-width:700px){
-
-.banner img {
+.banner img{
     width:100%;
+    max-width:1100px;
+    display:block;
+    margin:auto;
 }
 
-.zona-radio {
+/* MENU */
+
+.menu{
+    background:#1d3557;
+    border-top:1px solid #3d5f91;
+    border-bottom:1px solid #3d5f91;
+    text-align:center;
+}
+
+.menu a{
+    display:inline-block;
+    padding:12px 20px;
+    color:white;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.menu a:hover{
+    background:#2f4f7f;
+}
+
+/* CONTENIDO */
+
+.contenido{
+    padding:15px;
+}
+
+.zona-principal{
+    display:flex;
+    gap:15px;
+}
+
+.caja{
+    background:#13233f;
+    border:1px solid #274c7a;
+    border-radius:6px;
+    padding:15px;
+}
+
+.radio{
+    flex:2;
+}
+
+.dj{
+    flex:1;
+    text-align:center;
+}
+
+h2{
+    margin-top:0;
+    color:#7dc8ff;
+    font-size:18px;
+}
+
+.reproductor{
+    max-width:420px;
+    margin:auto;
+}
+
+.estado{
+    color:#4cff4c;
+    font-weight:bold;
+}
+
+.footer{
+    text-align:center;
+    padding:20px;
+    color:#8ca2c0;
+    font-size:12px;
+}
+
+@media(max-width:800px){
+
+.zona-principal{
     flex-direction:column;
 }
 
-.bloque {
-    margin:15px 0;
 }
-
-}
-
 
 </style>
 
 </head>
 
-
 <body>
 
 <div class="contenedor">
 
-    <!-- BANNER -->
     <div class="banner">
-        <img src="./ChatGPT Image 13 jul 2026, 14_48_09.png" 
-             alt="Habbo CabraX FM">
+        <img src="./ChatGPT Image 13 jul 2026, 14_48_09.png" alt="Habbo CabraX FM">
     </div>
 
-    <!-- RADIO + DJ -->
-    <div class="zona-radio">
+    <div class="menu">
+        <a href="index.html">🏠 Inicio</a>
+        <a href="panel.html">🎙️ Panel DJ</a>
+    </div>
 
-        <!-- RADIO -->
-        <div class="bloque">
+    <div class="contenido">
 
-            <h2>🔴 HABBO CABRAX FM EN DIRECTO</h2>
+        <div class="zona-principal">
 
-            <p>🎧 Escucha nuestra radio online</p>
+            <div class="caja radio">
 
-            <br>
+                <h2>🔴 Radio en Directo</h2>
 
-            <div class="reproductor">
+                <div class="reproductor">
 
-                <div data-type="podcastsPlayer"
-                     data-publicToken="b8bc4130-c5a6-4d87-9841-c2254d1bd665"
-                     data-theme="dark"
-                     data-color="EA0505"
-                     data-channelId="a23e4e3b-cead-4805-9d75-0dd9e0afe06a"
-                     class="cstrEmbed">
+                    <div data-type="podcastsPlayer"
+                    data-publicToken="b8bc4130-c5a6-4d87-9841-c2254d1bd665"
+                    data-theme="dark"
+                    data-color="EA0505"
+                    data-channelId="a23e4e3b-cead-4805-9d75-0dd9e0afe06a"
+                    class="cstrEmbed">
 
-                    <a href="https://www.caster.fm">Shoutcast Hosting</a>
-                    <a href="https://www.caster.fm">Stream Hosting</a>
-                    <a href="https://www.caster.fm">Radio Server Hosting</a>
+                        <a href="https://www.caster.fm">Shoutcast Hosting</a>
+                        <a href="https://www.caster.fm">Stream Hosting</a>
+                        <a href="https://www.caster.fm">Radio Server Hosting</a>
+
+                    </div>
 
                 </div>
 
             </div>
 
+            <div class="caja dj">
+
+                <h2>🎙️ DJ en Emisión</h2>
+
+                <p class="estado">🟢 RADIO ONLINE</p>
+
+                <hr>
+
+                <p><strong>DJ actual</strong></p>
+
+                <h3 id="dj-actual">
+                    Esperando DJ...
+                </h3>
+
+                <p><strong>Programa</strong></p>
+
+                <p id="programa-actual">
+                    Habbo CabraX FM
+                </p>
+
+                <p><strong>Estado</strong></p>
+
+                <p id="sesion-actual">
+                    Radio online
+                </p>
+
+            </div>
+
         </div>
-
-        <!-- DJ -->
-        <div class="bloque">
-
-            <h2>🔴 DJ EN EMISIÓN</h2>
-
-            <p id="estado-dj">🟢 RADIO ONLINE</p>
-
-            <br>
-
-            <p>🎧 DJ actual:</p>
-
-            <h3 id="dj-actual">Esperando DJ...</h3>
-
-            <br>
-
-            <p>🎵 Programa:</p>
-
-            <h3 id="programa-actual">Habbo CabraX FM</h3>
-
-            <br>
-
-            <p>⏰ Estado:</p>
-
-            <h3 id="sesion-actual">Radio online</h3>
-
-        </div>
-
-    </div>
-
-    <!-- PANEL DJ -->
-    <div class="bloque">
-
-        <h2>🔐 PANEL DJ</h2>
-
-        <p>
-            Acceso exclusivo para locutores autorizados de Habbo CabraX FM.
-        </p>
-
-        <br>
-
-        <button onclick="window.location.href='panel.html'">
-    ACCEDER
-</button>
-
-    </div>
-
-    <!-- INFORMACIÓN -->
-    <div class="bloque">
-
-        <h2>📻 HABBO CABRAX FM</h2>
-
-        <p>
-            La radio online de la comunidad Habbo CabraX.
-        </p>
-
-        <p>
-            🎧 Música · DJs · Sesiones en directo
-        </p>
 
     </div>
 
