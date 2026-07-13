@@ -3,115 +3,112 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>HabboCabrax FM</title>
 
 <style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
 body{
-    margin:0;
-    background:#071524;
-    color:white;
-    font-family:Arial,sans-serif;
+background:#04142a;
+color:white;
 }
 
-header{
-    background:#0b1b2f;
-    padding:20px;
-    border-bottom:3px solid #1f8fff;
+.header{
+width:100%;
 }
 
-.logo{
-    font-size:34px;
-    font-weight:bold;
-    color:#ffb900;
+.header img{
+width:100%;
+display:block;
 }
 
-.logo span{
-    color:#3aa7ff;
+.contenedor{
+max-width:1400px;
+margin:auto;
+padding:20px;
 }
 
-.banner{
-    text-align:center;
-    padding:80px 20px;
-    background:linear-gradient(180deg,#123e70,#081726);
-}
-
-.banner h1{
-    font-size:60px;
-    margin:0;
-}
-
-.banner p{
-    font-size:22px;
-}
-
-.btn{
-    display:inline-block;
-    margin-top:20px;
-    padding:15px 30px;
-    background:#1f8fff;
-    color:white;
-    text-decoration:none;
-    border-radius:10px;
-    font-weight:bold;
-}
-
-.container{
-    display:grid;
-    grid-template-columns:2fr 1fr;
-    gap:20px;
-    padding:20px;
+.grid{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:20px;
 }
 
 .card{
-    background:#10233b;
-    padding:20px;
-    border-radius:12px;
+background:#082040;
+border:1px solid #0e3a6d;
+border-radius:15px;
+padding:20px;
+box-shadow:0 0 20px rgba(0,150,255,.2);
 }
 
-footer{
-    text-align:center;
-    padding:20px;
-    background:#08131f;
+h2{
+margin-bottom:15px;
+color:#49b8ff;
+}
+
+iframe{
+border:none;
+width:100%;
 }
 
 @media(max-width:900px){
-    .container{
-        grid-template-columns:1fr;
-    }
-}
-</style>
 
+.grid{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
 </head>
 <body>
 
-<header>
-<div class="logo">Habbo<span>Cabrax</span> FM</div>
-</header>
+<div class="header">
+<img src="banner-habbocabraxfm.png" alt="HabboCabrax FM">
+</div>
 
-<section class="banner">
-<h1>HABBOCABRAX FM</h1>
-<p>La radio de Habbo Hotel</p>
-<a href="#" class="btn">▶ ESCUCHAR AHORA</a>
-</section>
+<div class="contenedor">
 
-<div class="container">
+<div class="grid">
 
 <div class="card">
-<h2>📻 Radio en directo</h2>
-<p>DJ: </p>
-<p>Estado: ONLINE</p>
+
+<h2>🎵 Radio en Directo</h2>
+
+<div data-type="podcastsPlayer"
+data-publicToken="b8bc4130-c5a6-4d87-9841-c2254d1bd665"
+data-theme="dark"
+data-color="1EA9E8"
+data-channelId="a23e4e3b-cead-4805-9d75-0dd9e0afe06a"
+class="cstrEmbed">
+</div>
+
+<script src="//cdn.cloud.caster.fm/widgets/embed.js"></script>
+
 </div>
 
 <div class="card">
-<h2>💬 Chat</h2>
-<p>Próximamente...</p>
-</div>
+
+<h2>💬 Chat en Vivo</h2>
+
+<iframe
+src="https://tlk.io/habbocabrax"
+height="600">
+</iframe>
 
 </div>
 
-<footer>
-© HabboCabrax FM
-</footer>
+</div>
+
+</div>
 
 </body>
 </html>
