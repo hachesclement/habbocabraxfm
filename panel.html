@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Panel DJ - Habbo CabraX FM</title>
+
+<style>
+
+body{
+    background:#050b18;
+    color:white;
+    font-family:Arial, Helvetica, sans-serif;
+    margin:0;
+}
+
+.contenedor{
+    max-width:600px;
+    margin:50px auto;
+    padding:20px;
+}
+
+.bloque{
+    background:#082040;
+    border:1px solid #0e3a6d;
+    border-radius:15px;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 0 20px rgba(0,150,255,.2);
+}
+
+h1{
+    color:#49b8ff;
+}
+
+input{
+    width:90%;
+    padding:12px;
+    margin:10px 0;
+    border:none;
+    border-radius:8px;
+}
+
+button{
+    background:#e30613;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    opacity:0.9;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="contenedor">
+
+    <div class="bloque">
+
+        <h1>🔐 Panel DJ</h1>
+
+        <p>Acceso para locutores autorizados</p>
+
+        <input type="text" id="usuario" placeholder="Usuario">
+
+        <input type="password" id="password" placeholder="Contraseña">
+
+        <br><br>
+
+        <button onclick="loginDJ()">
+            ACCEDER
+        </button>
+
+        <p id="mensaje"></p>
+
+    </div>
+
+</div>
+
+<script>
+
+function loginDJ(){
+
+    const usuario = document.getElementById("usuario").value;
+    const password = document.getElementById("password").value;
+
+    if(usuario === "" || password === ""){
+        document.getElementById("mensaje").innerHTML =
+        "Introduce usuario y contraseña";
+        return;
+    }
+
+    document.getElementById("mensaje").innerHTML =
+    "Panel preparado. Próximo paso: conectar con Supabase.";
+
+}
+
+</script>
+
+</body>
+
+</html>
