@@ -1,120 +1,199 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>HabboCabrax FM</title>
+<title>Habbo CabraX FM</title>
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial, sans-serif;
+body {
+    margin: 0;
+    background: #050b18;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
 }
 
-body{
-background:#04142a;
-color:white;
+.contenedor {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
 }
 
-.header{
-width:100%;
+.banner {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
-.header img{
-width:100%;
-display:block;
+.banner img {
+    width: 85%;
+    max-width: 1000px;
+    height: auto;
 }
 
-.contenedor{
-max-width:1400px;
-margin:auto;
-padding:20px;
+
+.bloque {
+    background: #082040;
+    border: 1px solid #0e3a6d;
+    border-radius: 15px;
+    padding: 25px;
+    margin: 25px auto;
+    max-width: 700px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0,150,255,.2);
 }
 
-.grid{
-display:grid;
-grid-template-columns:2fr 1fr;
-gap:20px;
+
+h2 {
+    color: #49b8ff;
+    margin-top: 0;
 }
 
-.card{
-background:#082040;
-border:1px solid #0e3a6d;
-border-radius:15px;
-padding:20px;
-box-shadow:0 0 20px rgba(0,150,255,.2);
+
+.reproductor {
+    max-width: 600px;
+    margin: auto;
 }
 
-h2{
-margin-bottom:15px;
-color:#49b8ff;
+
+iframe {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
 }
 
-iframe{
-border:none;
-width:100%;
+
+.footer {
+    text-align:center;
+    margin-top:40px;
+    padding:20px;
+    color:#888;
 }
 
-@media(max-width:900px){
 
-.grid{
-grid-template-columns:1fr;
+@media(max-width:700px){
+
+.banner img {
+    width:100%;
+}
+
+.bloque {
+    margin:15px 0;
 }
 
 }
+
 
 </style>
+
 </head>
+
+
 <body>
 
-<div style="width:100%; text-align:center;">
-    <img src="./ChatGPT Image 13 jul 2026, 14_48_09.png" 
-         alt="Habbo Cabra XFM" 
-         style="width:85%; max-width:1000px; height:auto;">
+
+<div class="contenedor">
+
+
+<!-- BANNER -->
+
+<div class="banner">
+
+<img src="./ChatGPT Image 13 jul 2026, 14_48_09.png" 
+alt="Habbo CabraX FM">
+
 </div>
 
-<div class="card">
+
+
+<!-- RADIO -->
+
+<div class="bloque">
 
 <h2>🎵 Radio en Directo</h2>
 
+
+<div class="reproductor">
+
+
 <div data-type="podcastsPlayer"
-<div style="max-width:600px; margin:0 auto;">
+data-publicToken="b8bc4130-c5a6-4d87-9841-c2254d1bd665"
+data-theme="dark"
+data-color="EA0505"
+data-channelId="a23e4e3b-cead-4805-9d75-0dd9e0afe06a"
+class="cstrEmbed">
 
-    <div data-type="podcastsPlayer"
-    data-publicToken="b8bc4130-c5a6-4d87-9841-c2254d1bd665"
-    data-theme="dark"
-    data-color="EA0505"
-    data-channelId="a23e4e3b-cead-4805-9d75-0dd9e0afe06a"
-    class="cstrEmbed">
 
-    <a href="https://www.caster.fm">Shoutcast Hosting</a>
-    <a href="https://www.caster.fm">Stream Hosting</a>
-    <a href="https://www.caster.fm">Radio Server Hosting</a>
+<a href="https://www.caster.fm">Shoutcast Hosting</a>
+<a href="https://www.caster.fm">Stream Hosting</a>
+<a href="https://www.caster.fm">Radio Server Hosting</a>
 
-    </div>
 
 </div>
 
-<script src="//cdn.cloud.caster.fm/widgets/embed.js"></script>
 
-<div class="card">
+</div>
+
+</div>
+
+
+
+
+<!-- DJ -->
+
+<div class="bloque">
+
+
+<h2>🎙️ DJ en Directo</h2>
+
+
+<p>🔴 Estado: En espera</p>
+
+<p>DJ actual: Próximamente</p>
+
+<p>Programa: Próximamente</p>
+
+
+</div>
+
+
+
+
+<!-- CHAT -->
+
+<div class="bloque">
+
 
 <h2>💬 Chat en Vivo</h2>
 
-<iframe
+
+<iframe 
 src="https://tlk.io/habbocabrax"
-height="600">
+height="450">
 </iframe>
 
-</div>
 
 </div>
 
+
+
+<div class="footer">
+
+Habbo Cabra XFM © 2026
+
 </div>
+
+
+
+</div>
+
+
+<script src="//cdn.cloud.caster.fm/widgets/embed.js"></script>
+
 
 </body>
+
 </html>
