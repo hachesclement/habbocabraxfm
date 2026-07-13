@@ -41,7 +41,6 @@ body {
     border-radius: 15px;
     padding: 25px;
     margin: 25px auto;
-    max-width: 700px;
     text-align: center;
     box-shadow: 0 0 20px rgba(0,150,255,.2);
 }
@@ -54,15 +53,8 @@ h2 {
 
 
 .reproductor {
-    max-width: 600px;
+    max-width: 450px;
     margin: auto;
-}
-
-
-iframe {
-    width: 100%;
-    border: none;
-    border-radius: 10px;
 }
 
 
@@ -74,10 +66,26 @@ iframe {
 }
 
 
+.zona-radio {
+    display:flex;
+    gap:25px;
+    align-items:stretch;
+}
+
+
+.zona-radio .bloque {
+    flex:1;
+}
+
+
 @media(max-width:700px){
 
 .banner img {
     width:100%;
+}
+
+.zona-radio {
+    flex-direction:column;
 }
 
 .bloque {
@@ -107,7 +115,14 @@ alt="Habbo CabraX FM">
 
 </div>
 
-<!-- RADIO EN DIRECTO -->
+
+
+<!-- RADIO + DJ -->
+
+<div class="zona-radio">
+
+
+<!-- RADIO -->
 
 <div class="bloque">
 
@@ -119,7 +134,9 @@ alt="Habbo CabraX FM">
 
 <br>
 
-<div class="reproductor" style="max-width:450px; margin:auto;">
+
+<div class="reproductor">
+
 
 <div data-type="podcastsPlayer"
 data-publicToken="b8bc4130-c5a6-4d87-9841-c2254d1bd665"
@@ -134,7 +151,9 @@ class="cstrEmbed">
 
 </div>
 
+
 </div>
+
 
 <br>
 
@@ -145,12 +164,9 @@ class="cstrEmbed">
 </div>
 
 
-<!-- DJ + CHAT EN HORIZONTAL -->
 
-<table width="100%" cellpadding="10">
-<tr>
 
-<td width="50%" valign="top">
+<!-- DJ -->
 
 <div class="bloque">
 
@@ -164,26 +180,29 @@ class="cstrEmbed">
 
 <h3>Por anunciar</h3>
 
+
 <br>
+
 
 <p>🎵 Programa:</p>
 
 <h3>Habbo CabraX FM</h3>
 
+
+<br>
+
+
+<p>⏰ Horario:</p>
+
+<h3>Sesiones en directo</h3>
+
+
 </div>
 
-</td>
 
 
-<td width="50%" valign="top">
+</div>
 
-<div class="bloque">
-
-
-</td>
-
-</tr>
-</table>
 
 
 <div class="footer">
