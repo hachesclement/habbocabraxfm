@@ -11,9 +11,11 @@
 
 body{
     margin:0;
-    background:#0b1528;
+    background:#0b172b;
+    background-image:
+    radial-gradient(circle at top,#1e355c 0%,#0b172b 60%);
     font-family:Verdana, Arial, sans-serif;
-    color:#fff;
+    color:white;
 }
 
 .contenedor{
@@ -24,55 +26,55 @@ body{
 /* BANNER */
 
 .banner{
-    text-align:center;
-    background:#06101f;
+    margin-top:15px;
 }
 
 .banner img{
     width:100%;
-    max-width:1100px;
     display:block;
-    margin:auto;
+    border-radius:8px;
+    border:2px solid #274c7a;
 }
 
 /* MENU */
 
 .menu{
-    background:#1d3557;
-    border-top:1px solid #3d5f91;
-    border-bottom:1px solid #3d5f91;
-    text-align:center;
+    background:#183153;
+    border:1px solid #274c7a;
+    margin-top:8px;
+    border-radius:6px;
+    overflow:hidden;
 }
 
 .menu a{
     display:inline-block;
-    padding:12px 20px;
     color:white;
     text-decoration:none;
-    font-size:14px;
+    padding:12px 20px;
+    font-size:13px;
     font-weight:bold;
 }
 
 .menu a:hover{
-    background:#2f4f7f;
+    background:#274c7a;
 }
 
 /* CONTENIDO */
 
 .contenido{
-    padding:15px;
+    margin-top:15px;
 }
 
-.zona-principal{
+.zona-radio{
     display:flex;
     gap:15px;
 }
 
 .caja{
-    background:#13233f;
+    background:#132540;
     border:1px solid #274c7a;
     border-radius:6px;
-    padding:15px;
+    overflow:hidden;
 }
 
 .radio{
@@ -81,23 +83,38 @@ body{
 
 .dj{
     flex:1;
-    text-align:center;
 }
 
-h2{
-    margin-top:0;
-    color:#7dc8ff;
-    font-size:18px;
+.titulo{
+    background:#1d3c67;
+    padding:10px;
+    font-size:14px;
+    font-weight:bold;
+    border-bottom:1px solid #274c7a;
+}
+
+.cuerpo{
+    padding:15px;
 }
 
 .reproductor{
-    max-width:420px;
+    max-width:450px;
     margin:auto;
 }
 
-.estado{
-    color:#4cff4c;
+.estado-online{
+    color:#42ff42;
     font-weight:bold;
+}
+
+.info{
+    margin:10px 0;
+}
+
+.info strong{
+    display:block;
+    color:#8fd4ff;
+    margin-bottom:5px;
 }
 
 .footer{
@@ -109,7 +126,7 @@ h2{
 
 @media(max-width:800px){
 
-.zona-principal{
+.zona-radio{
     flex-direction:column;
 }
 
@@ -123,35 +140,49 @@ h2{
 
 <div class="contenedor">
 
+    <!-- BANNER -->
+
     <div class="banner">
-        <img src="./ChatGPT Image 13 jul 2026, 14_48_09.png" alt="Habbo CabraX FM">
+        <img src="banner.png" alt="Habbo CabraX FM">
     </div>
+
+    <!-- MENU -->
 
     <div class="menu">
         <a href="index.html">🏠 Inicio</a>
         <a href="panel.html">🎙️ Panel DJ</a>
     </div>
 
+    <!-- CONTENIDO -->
+
     <div class="contenido">
 
-        <div class="zona-principal">
+        <div class="zona-radio">
+
+            <!-- RADIO -->
 
             <div class="caja radio">
 
-                <h2>🔴 Radio en Directo</h2>
+                <div class="titulo">
+                    🔴 RADIO EN DIRECTO
+                </div>
 
-                <div class="reproductor">
+                <div class="cuerpo">
 
-                    <div data-type="podcastsPlayer"
-                    data-publicToken="b8bc4130-c5a6-4d87-9841-c2254d1bd665"
-                    data-theme="dark"
-                    data-color="EA0505"
-                    data-channelId="a23e4e3b-cead-4805-9d75-0dd9e0afe06a"
-                    class="cstrEmbed">
+                    <div class="reproductor">
 
-                        <a href="https://www.caster.fm">Shoutcast Hosting</a>
-                        <a href="https://www.caster.fm">Stream Hosting</a>
-                        <a href="https://www.caster.fm">Radio Server Hosting</a>
+                        <div data-type="podcastsPlayer"
+                        data-publicToken="b8bc4130-c5a6-4d87-9841-c2254d1bd665"
+                        data-theme="dark"
+                        data-color="EA0505"
+                        data-channelId="a23e4e3b-cead-4805-9d75-0dd9e0afe06a"
+                        class="cstrEmbed">
+
+                            <a href="https://www.caster.fm">Shoutcast Hosting</a>
+                            <a href="https://www.caster.fm">Stream Hosting</a>
+                            <a href="https://www.caster.fm">Radio Server Hosting</a>
+
+                        </div>
 
                     </div>
 
@@ -159,31 +190,42 @@ h2{
 
             </div>
 
+            <!-- DJ -->
+
             <div class="caja dj">
 
-                <h2>🎙️ DJ en Emisión</h2>
+                <div class="titulo">
+                    🎙️ DJ EN EMISIÓN
+                </div>
 
-                <p class="estado">🟢 RADIO ONLINE</p>
+                <div class="cuerpo">
 
-                <hr>
+                    <p class="estado-online">
+                        🟢 RADIO ONLINE
+                    </p>
 
-                <p><strong>DJ actual</strong></p>
+                    <div class="info">
+                        <strong>DJ actual</strong>
+                        <span id="dj-actual">
+                            Esperando DJ...
+                        </span>
+                    </div>
 
-                <h3 id="dj-actual">
-                    Esperando DJ...
-                </h3>
+                    <div class="info">
+                        <strong>Programa</strong>
+                        <span id="programa-actual">
+                            Habbo CabraX FM
+                        </span>
+                    </div>
 
-                <p><strong>Programa</strong></p>
+                    <div class="info">
+                        <strong>Estado</strong>
+                        <span id="sesion-actual">
+                            Radio online
+                        </span>
+                    </div>
 
-                <p id="programa-actual">
-                    Habbo CabraX FM
-                </p>
-
-                <p><strong>Estado</strong></p>
-
-                <p id="sesion-actual">
-                    Radio online
-                </p>
+                </div>
 
             </div>
 
