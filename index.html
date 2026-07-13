@@ -10,27 +10,28 @@
 <style>
 
 *{
+    margin:0;
+    padding:0;
     box-sizing:border-box;
 }
 
 body{
-    margin:0;
-    background:#06111f;
+    background:#081525;
     font-family:Verdana, Arial, sans-serif;
-    color:#fff;
+    color:white;
 }
 
 .contenedor{
     width:98%;
-    max-width:1880px;
+    max-width:1800px;
     margin:15px auto;
 }
 
 /* BANNER */
 
 .banner{
-    border:4px solid #08396d;
-    background:#03101d;
+    border:3px solid #0a3d72;
+    background:#04101d;
 }
 
 .banner img{
@@ -41,27 +42,31 @@ body{
 /* MENU */
 
 .menu{
-    background:linear-gradient(#0f4b8e,#08386b);
-    border-left:4px solid #08396d;
-    border-right:4px solid #08396d;
-    border-bottom:4px solid #08396d;
+    background:linear-gradient(#0f4b8e,#093766);
+    border-left:3px solid #0a3d72;
+    border-right:3px solid #0a3d72;
+    border-bottom:3px solid #0a3d72;
     text-align:center;
-    padding:14px;
 }
 
 .menu a{
+    display:inline-block;
     color:white;
     text-decoration:none;
     font-weight:bold;
-    font-size:22px;
-    margin:0 35px;
+    font-size:18px;
+    padding:14px 30px;
+}
+
+.menu a:hover{
+    background:#134c88;
 }
 
 /* PANEL GENERAL */
 
 .panel{
     margin-top:12px;
-    border:4px solid #08396d;
+    border:3px solid #0a3d72;
     background:#041a33;
     padding:12px;
 }
@@ -70,29 +75,32 @@ body{
 
 .zona-radio{
     display:flex;
-    gap:18px;
+    gap:12px;
+}
+
+/* BLOQUES */
+
+.bloque{
+    background:#08213f;
+    border:2px solid #0f4b8e;
 }
 
 .radio{
-    width:43%;
+    width:45%;
 }
 
 .dj{
-    width:57%;
+    width:55%;
 }
 
-/* CAJAS */
-
-.bloque{
-    border:3px solid #0d4b8f;
-    background:linear-gradient(to right,#06192f,#07264a);
-}
+/* TITULOS */
 
 .titulo{
-    padding:18px;
-    font-size:34px;
+    background:#0d3f76;
+    border-bottom:2px solid #0f4b8e;
+    padding:15px;
+    font-size:24px;
     font-weight:bold;
-    border-bottom:2px solid #0d4b8f;
 }
 
 /* CUERPOS */
@@ -101,66 +109,27 @@ body{
     padding:20px;
 }
 
-/* PLAYER FAKE */
-
-.player-box{
-    margin-top:20px;
-    border:3px solid #173d66;
-    background:#020d1b;
-    padding:20px;
-    display:flex;
-    align-items:center;
-}
-
-.play{
-    width:90px;
-    height:90px;
-    border-radius:50%;
-    background:#1d2b3c;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:40px;
-    margin-right:25px;
-}
-
-.radio-name{
-    color:#ff443a;
-    font-size:36px;
-    font-weight:bold;
-}
-
-.radio-live{
-    color:#6cff39;
-    font-size:30px;
-    font-weight:bold;
-}
-
 /* DJ */
 
-.dj-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr 1fr;
-}
-
-.dj-box{
-    border-left:1px solid #0d4b8f;
-    padding:20px;
-    min-height:180px;
-}
-
-.dj-box:first-child{
-    border-left:none;
-}
-
-.dj-titulo{
-    color:#ffd33a;
-    font-size:28px;
+.estado-online{
+    color:#56ff56;
     font-weight:bold;
-    margin-bottom:10px;
+    font-size:22px;
 }
 
-.dj-valor{
+.dato{
+    margin-bottom:25px;
+}
+
+.dato span{
+    display:block;
+    color:#ffd64c;
+    font-weight:bold;
+    font-size:18px;
+    margin-bottom:8px;
+}
+
+.valor{
     font-size:24px;
 }
 
@@ -168,16 +137,16 @@ body{
 
 .footer{
     margin-top:12px;
-    border:4px solid #08396d;
-    background:#0a2e5a;
+    background:#0d3f76;
+    border:3px solid #0a3d72;
     text-align:center;
-    padding:18px;
-    font-size:22px;
+    padding:15px;
+    font-size:14px;
 }
 
 /* MOVIL */
 
-@media(max-width:1100px){
+@media(max-width:1000px){
 
 .zona-radio{
     flex-direction:column;
@@ -186,15 +155,6 @@ body{
 .radio,
 .dj{
     width:100%;
-}
-
-.dj-grid{
-    grid-template-columns:1fr;
-}
-
-.dj-box{
-    border-left:none;
-    border-top:1px solid #0d4b8f;
 }
 
 }
@@ -217,18 +177,18 @@ body{
 
     <div class="menu">
         <a href="index.html">🏠 INICIO</a>
-        <a href="panel.html">🎙️ PANEL DJ</a>
+        <a href="panel.html">🎙 PANEL DJ</a>
     </div>
 
-    <!-- PANEL PRINCIPAL -->
+    <!-- CONTENIDO -->
 
     <div class="panel">
 
-        <div class="zona">
+        <div class="zona-radio">
 
             <!-- RADIO -->
 
-            <div class="caja radio">
+            <div class="bloque radio">
 
                 <div class="titulo">
                     🔴 RADIO EN DIRECTO
@@ -236,21 +196,17 @@ body{
 
                 <div class="cuerpo">
 
-                    <div class="reproductor">
-
-                        <div
-                        data-type="podcastsPlayer"
-                        data-publicToken="b8bc4130-c5a6-4d87-9841-c2254d1bd665"
-                        data-theme="dark"
-                        data-color="EA0505"
-                        data-channelId="a23e4e3b-cead-4805-9d75-0dd9e0afe06a"
-                        class="cstrEmbed">
+                    <div
+                    data-type="podcastsPlayer"
+                    data-publicToken="b8bc4130-c5a6-4d87-9841-c2254d1bd665"
+                    data-theme="dark"
+                    data-color="EA0505"
+                    data-channelId="a23e4e3b-cead-4805-9d75-0dd9e0afe06a"
+                    class="cstrEmbed">
 
                         <a href="https://www.caster.fm">Shoutcast Hosting</a>
                         <a href="https://www.caster.fm">Stream Hosting</a>
                         <a href="https://www.caster.fm">Radio Server Hosting</a>
-
-                        </div>
 
                     </div>
 
@@ -260,37 +216,37 @@ body{
 
             <!-- DJ -->
 
-            <div class="caja dj">
+            <div class="bloque dj">
 
                 <div class="titulo">
-                    🎙️ DJ EN EMISIÓN
+                    🎙 DJ EN EMISIÓN
                 </div>
 
                 <div class="cuerpo">
 
                     <div class="dato">
-                        <span>Estado</span>
+                        <span>ESTADO</span>
                         <div class="estado-online">
                             🟢 RADIO ONLINE
                         </div>
                     </div>
 
                     <div class="dato">
-                        <span>DJ Actual</span>
+                        <span>DJ ACTUAL</span>
                         <div id="dj-actual" class="valor">
                             Esperando DJ...
                         </div>
                     </div>
 
                     <div class="dato">
-                        <span>Programa</span>
+                        <span>PROGRAMA</span>
                         <div id="programa-actual" class="valor">
                             Habbo CabraX FM
                         </div>
                     </div>
 
                     <div class="dato">
-                        <span>Sesión</span>
+                        <span>SESIÓN</span>
                         <div id="sesion-actual" class="valor">
                             Radio online
                         </div>
