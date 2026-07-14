@@ -131,26 +131,34 @@
             text-align: center;
         }
 
-        /* REPRODUCTOR NATIVO */
+        /* CONTENEDOR DEL SCRIPT REPRODUCTOR */
         .player-habbo {
             background: #1e1e1e;
             border: 2px dashed #41729F;
             border-radius: 4px;
-            padding: 20px 15px;
+            padding: 15px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 140px;
         }
 
         .player-status {
             font-size: 11px;
             color: #aaa;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            font-weight: bold;
         }
 
-        .player-habbo audio {
-            width: 100%;
-            outline: none;
+        /* Ajuste para que el widget de MyRadioStream no se rompa */
+        .player-habbo iframe {
+            max-width: 100% !important;
+            margin: 0 auto !important;
+            display: block !important;
         }
 
         /* ESTADO DJ */
@@ -230,18 +238,14 @@
 
             <div class="bloque radio">
                 <div class="titulo">
-                    📻 EN SINTONÍA
+                    Exchange-Alt 📻 EN SINTONÍA
                 </div>
                 <div class="cuerpo">
                     
                     <div class="player-habbo">
                         <div class="player-status">Habbo CabraX FM Player</div>
                         
-                        <!-- TU REPRODUCTOR CON EL TÚNEL DE RENDER -->
-                        <audio controls preload="none">
-                            <source src="PEGA_AQUÍ_TU_ENLACE_DE_RENDER" type="audio/mpeg">
-                            Tu navegador no soporta el reproductor de audio.
-                        </audio>
+                        <script src="https://myradiostream.com/embed/habbocabrax"></script>
                     </div>
 
                 </div>
@@ -249,7 +253,7 @@
 
             <div class="bloque dj">
                 <div class="titulo">
-                    👤 DJ EN EMISIÓN
+                    User 👤 DJ EN EMISIÓN
                 </div>
                 <div class="cuerpo">
                     <div class="dato">
@@ -279,5 +283,4 @@
 </div>
 
 </body>
-</html>
 </html>
