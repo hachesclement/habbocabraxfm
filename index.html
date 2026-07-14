@@ -26,6 +26,7 @@ body{
     margin:0 auto;
 }
 
+
 /* BANNER */
 
 .banner{
@@ -63,6 +64,7 @@ body{
 }
 
 
+
 /* PANEL */
 
 .panel{
@@ -72,10 +74,12 @@ body{
     padding:10px;
 }
 
+
 .zona-radio{
     display:flex;
     gap:10px;
 }
+
 
 
 /* BLOQUES */
@@ -85,13 +89,16 @@ body{
     border:2px solid #0f4b8e;
 }
 
+
 .radio{
     width:60%;
 }
 
+
 .dj{
     width:40%;
 }
+
 
 
 /* TITULOS */
@@ -105,11 +112,13 @@ body{
 }
 
 
+
 /* CONTENIDO */
 
 .cuerpo{
     padding:15px;
 }
+
 
 
 /* DJ */
@@ -120,9 +129,11 @@ body{
     font-weight:bold;
 }
 
+
 .dato{
     margin-bottom:15px;
 }
+
 
 .dato span{
     display:block;
@@ -132,9 +143,19 @@ body{
     margin-bottom:4px;
 }
 
+
 .valor{
     font-size:16px;
 }
+
+
+
+/* OCULTAR PUBLICIDAD CASTER */
+
+.cstrEmbed a{
+    display:none !important;
+}
+
 
 
 /* FOOTER */
@@ -147,6 +168,7 @@ body{
     padding:12px;
     font-size:12px;
 }
+
 
 
 /* MOVIL */
@@ -169,6 +191,7 @@ body{
 </head>
 
 
+
 <body>
 
 <div class="contenedor">
@@ -181,12 +204,21 @@ body{
 </div>
 
 
+
 <!-- MENU -->
 
 <div class="menu">
-    <a href="index.html">🏠 INICIO</a>
-    <a href="panel.html">🎙 PANEL DJ</a>
+
+<a href="index.html">
+🏠 INICIO
+</a>
+
+<a href="panel.html">
+🎙 PANEL DJ
+</a>
+
 </div>
+
 
 
 
@@ -194,22 +226,26 @@ body{
 
 <div class="panel">
 
+
 <div class="zona-radio">
+
 
 
 <!-- RADIO -->
 
 <div class="bloque radio">
 
+
 <div class="titulo">
 🔴 RADIO EN DIRECTO
 </div>
 
 
+
 <div class="cuerpo">
 
 
-<div 
+<div
 data-type="newStreamPlayer"
 data-publicToken="b8bc4130-c5a6-4d87-9841-c2254d1bd665"
 data-theme="dark"
@@ -227,7 +263,10 @@ class="cstrEmbed">
 
 </div>
 
+
 </div>
+
+
 
 
 
@@ -235,9 +274,11 @@ class="cstrEmbed">
 
 <div class="bloque dj">
 
+
 <div class="titulo">
 🎙 DJ EN EMISIÓN
 </div>
+
 
 
 <div class="cuerpo">
@@ -278,23 +319,33 @@ Habbo CabraX FM
 </div>
 
 
-</div>
 
 </div>
 
 
 </div>
 
+
+
 </div>
+
+
+</div>
+
+
 
 
 
 <div class="footer">
+
 Habbo CabraX FM © 2026
+
 </div>
 
 
+
 </div>
+
 
 
 <script src="https://cdn.cloud.caster.fm/widgets/embed.js"></script>
@@ -302,56 +353,4 @@ Habbo CabraX FM © 2026
 
 </body>
 
-</html>
-
-            <!-- DJ -->
-
-            <div class="bloque dj">
-
-                <div class="titulo">
-                    🎙 DJ EN EMISIÓN
-                </div>
-
-                <div class="cuerpo">
-
-                    <div class="dato">
-                        <span>ESTADO</span>
-                        <div class="estado-online">
-                            🟢 RADIO ONLINE
-                        </div>
-                    </div>
-
-                    <div class="dato">
-                        <span>DJ ACTUAL</span>
-                        <div id="dj-actual" class="valor">
-                            Esperando DJ...
-                        </div>
-                    </div>
-
-                    <div class="dato">
-                        <span>PROGRAMA</span>
-                        <div id="programa-actual" class="valor">
-                            Habbo CabraX FM
-                        </div>
-                    </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="footer">
-        Habbo CabraX FM © 2026
-    </div>
-
-</div>
-
-<script src="//cdn.cloud.caster.fm/widgets/embed.js"></script>
-
-</body>
 </html>
