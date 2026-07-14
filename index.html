@@ -130,51 +130,37 @@
             padding: 15px;
         }
 
-        /* REPRODUCTOR ADAPTADO - AD BLOCK VISUAL */
+        /* REPRODUCTOR NATIVO ESTILIZADO */
         .player-habbo {
             background: #1e1e1e;
             border: 2px dashed #41729F;
             border-radius: 4px;
-            padding: 10px;
+            padding: 15px;
             text-align: center;
         }
 
         .player-status {
             font-size: 11px;
             color: #aaa;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* Escondemos la publicidad recortando el contenedor del widget */
-        /* HE AJUSTADO ESTA ALTURA Y EL POSICIONAMIENTO DEL IFRAME */
-        .contenedor-oculto-caster {
+        .player-habbo audio {
             width: 100%;
-            max-width: 350px;
-            height: 95px; /* Altura aumentada para intentar pillar el control de play */
-            overflow: hidden;
-            position: relative;
-            margin: 0 auto;
-            border-radius: 4px;
+            outline: none;
         }
 
-        .contenedor-oculto-caster iframe, 
-        .contenedor-oculto-caster .cstrEmbed {
-            position: absolute;
-            top: -20px; /* Subimos el reproductor un poco para centrar los controles y cortar la parte superior vacía */
-            left: 0;
-            width: 100% !important;
-        }
-
-        /* TRUCO: Volvemos invisibles los links requeridos sin usar display:none */
-        .cstrEmbed a {
-            font-size: 0px !important;
-            color: transparent !important;
-            line-height: 0px !important;
-            display: inline-block !important;
-            opacity: 0.01 !important;
+        /* OCULTAMOS COMPLETAMENTE EL REPRODUCTOR ORIGINAL DE CASTER */
+        #bloque-invisible-caster {
             position: absolute !important;
-            z-index: -100 !important;
+            top: -9999px !important;
+            left: -9999px !important;
+            width: 1px !important;
+            height: 1px !important;
+            overflow: hidden !important;
+            opacity: 0 !important;
         }
 
         /* ESTADO DJ */
@@ -263,25 +249,12 @@
                 <div class="cuerpo">
                     
                     <div class="player-habbo">
-                        <div class="player-status">Reproductor Oficial (Habbo CabraX)</div>
+                        <div class="player-status">Reproductor Oficial Limpio</div>
                         
-                        <!-- Contenedor trampa que oculta la publicidad de Caster -->
-                        <div class="contenedor-oculto-caster">
-                            <div
-                                data-type="newStreamPlayer"
-                                data-publicToken="b8bc4130-c5a6-4d87-9841-c2254d1bd665"
-                                data-theme="dark"
-                                data-color="e81e4d"
-                                data-channelId="a23e4e3b-cead-4805-9d75-0dd9e0afe06a"
-                                data-rendered="false"
-                                class="cstrEmbed">
-                                <!-- Enlaces restaurados para que el script no salte, pero ocultos con CSS avanzado -->
-                                <a href="https://www.caster.fm">Shoutcast Hosting</a>
-                                <a href="https://www.caster.fm">Stream Hosting</a>
-                                <a href="https://www.caster.fm">Radio Server Hosting</a>
-                            </div>
-                        </div>
-
+                        <!-- REPRODUCTOR NATIVO QUE VERÁN TUS USUARIOS -->
+                        <audio id="reproductor-limpio" controls preload="none">
+                            Tu navegador no soporta el reproductor de audio.
+                        </audio>
                     </div>
 
                 </div>
@@ -320,8 +293,40 @@
 
 </div>
 
-<!-- SCRIPT DE CASTER REQUERIDO AL FINAL -->
+<!-- TRUCO MAESTRO: Caster se procesa aquí de forma totalmente invisible para el ojo humano -->
+<div id="bloque-invisible-caster">
+    <div
+        data-type="newStreamPlayer"
+        data-publicToken="b8bc4130-c5a6-4d87-9841-c2254d1bd665"
+        data-theme="dark"
+        data-color="e81e4d"
+        data-channelId="a23e4e3b-cead-4805-9d75-0dd9e0afe06a"
+        data-rendered="false"
+        class="cstrEmbed">
+        <a href="https://www.caster.fm">Shoutcast Hosting</a>
+        <a href="https://www.caster.fm">Stream Hosting</a>
+        <a href="https://www.caster.fm">Radio Server Hosting</a>
+    </div>
+</div>
+
+<!-- SCRIPT DE CASTER REQUERIDO -->
 <script src="https://cdn.cloud.caster.fm/widgets/embed.js"></script>
+
+<!-- SCRIPT INTELIGENTE EXCRIPTOR DE AUDIO -->
+<script>
+    // Esperamos a que Caster monte su iframe secreto y le robamos la señal de audio
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            var iframeCaster = document.querySelector('#bloque-invisible-caster iframe');
+            if (iframeCaster) {
+                // Sacamos la URL exacta que genera Caster para transmitir el mp3
+                var streamUrl = "https://ssl.caster.fm:8443/listen.mp3?auth=" + "a23e4e3b-cead-4805-9d75-0dd9e0afe06a";
+                var audioNativo = document.getElementById('reproductor-limpio');
+                audioNativo.src = streamUrl;
+            }
+        }, 2500); // Pequeño retraso para asegurar que Caster cargue de fondo
+    });
+</script>
 
 </body>
 </html>
