@@ -147,10 +147,11 @@
         }
 
         /* Escondemos la publicidad recortando el contenedor del widget */
+        /* HE AJUSTADO ESTA ALTURA Y EL POSICIONAMIENTO DEL IFRAME */
         .contenedor-oculto-caster {
             width: 100%;
             max-width: 350px;
-            height: 68px; /* Altura estratégica para pillar solo los controles de Caster */
+            height: 95px; /* Altura aumentada para intentar pillar el control de play */
             overflow: hidden;
             position: relative;
             margin: 0 auto;
@@ -160,7 +161,7 @@
         .contenedor-oculto-caster iframe, 
         .contenedor-oculto-caster .cstrEmbed {
             position: absolute;
-            top: 0;
+            top: -20px; /* Subimos el reproductor un poco para centrar los controles y cortar la parte superior vacía */
             left: 0;
             width: 100% !important;
         }
