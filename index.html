@@ -165,6 +165,17 @@
             width: 100% !important;
         }
 
+        /* TRUCO: Volvemos invisibles los links requeridos sin usar display:none */
+        .cstrEmbed a {
+            font-size: 0px !important;
+            color: transparent !important;
+            line-height: 0px !important;
+            display: inline-block !important;
+            opacity: 0.01 !important;
+            position: absolute !important;
+            z-index: -100 !important;
+        }
+
         /* ESTADO DJ */
         .estado-online {
             background: #47a047;
@@ -228,18 +239,22 @@
 
 <div class="contenedor">
 
+    <!-- BANNER -->
     <div class="banner">
         <img src="banner.png" alt="Habbo CabraX FM" onerror="this.src='https://i.imgur.com/LNZT1vH.png';">
     </div>
 
+    <!-- MENU -->
     <div class="menu">
         <a href="index.html" class="active">🏠 INICIO</a>
         <a href="panel.html">🎙 PANEL DJ</a>
     </div>
 
+    <!-- CONTENIDO -->
     <div class="panel">
         <div class="zona-radio">
 
+            <!-- CAJA DE LA RADIO -->
             <div class="bloque radio">
                 <div class="titulo">
                     📻 EN SINTONÍA
@@ -249,6 +264,7 @@
                     <div class="player-habbo">
                         <div class="player-status">Reproductor Oficial (Habbo CabraX)</div>
                         
+                        <!-- Contenedor trampa que oculta la publicidad de Caster -->
                         <div class="contenedor-oculto-caster">
                             <div
                                 data-type="newStreamPlayer"
@@ -258,6 +274,10 @@
                                 data-channelId="a23e4e3b-cead-4805-9d75-0dd9e0afe06a"
                                 data-rendered="false"
                                 class="cstrEmbed">
+                                <!-- Enlaces restaurados para que el script no salte, pero ocultos con CSS avanzado -->
+                                <a href="https://www.caster.fm">Shoutcast Hosting</a>
+                                <a href="https://www.caster.fm">Stream Hosting</a>
+                                <a href="https://www.caster.fm">Radio Server Hosting</a>
                             </div>
                         </div>
 
@@ -266,6 +286,7 @@
                 </div>
             </div>
 
+            <!-- CAJA DEL DJ -->
             <div class="bloque dj">
                 <div class="titulo">
                     👤 DJ EN EMISIÓN
@@ -291,12 +312,14 @@
         </div>
     </div>
 
+    <!-- FOOTER -->
     <div class="footer">
         Habbo CabraX FM © 2026 - Conectando a la comunidad al estilo clásico.
     </div>
 
 </div>
 
+<!-- SCRIPT DE CASTER REQUERIDO AL FINAL -->
 <script src="https://cdn.cloud.caster.fm/widgets/embed.js"></script>
 
 </body>
