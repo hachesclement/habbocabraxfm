@@ -1,143 +1,283 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Habbo Radio - HabbocabraXFM</title>
+    <title>Habbo CabraX FM</title>
     <style>
-        /* Fondo clásico de Habbo */
-        body {
-            background-image: url('https://i.imgur.com/b971M3w.png'); /* Fondo de la comunidad Habbo */
-            background-color: #2b2b2b;
-            background-repeat: repeat;
-            font-family: 'Verdana', sans-serif;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+        /* ESTILO GENERAL RETRO HABBO */
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        /* Contenedor principal estilo Habbo Consola / Caja */
-        .radio-container {
-            background: #111e24;
-            border: 3px solid #4a748c;
-            border-radius: 6px;
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.7), inset 0px 0px 10px rgba(0,0,0,0.5);
-            width: 450px;
-            padding: 20px;
-            text-align: center;
-            position: relative;
-        }
-
-        /* Encabezado con logo de Habbo */
-        .header {
-            margin-bottom: 15px;
-        }
-        .header img {
-            max-width: 180px;
-        }
-
-        /* Cuadro de texto / Marquesina estilo consola antigua */
-        .display-screen {
-            background-color: #000;
-            border: 2px solid #334e5a;
-            border-radius: 4px;
-            padding: 10px;
-            margin-bottom: 20px;
-            color: #00ff00; /* Verde fósforo clásico */
-            font-family: 'Courier New', monospace;
-            font-weight: bold;
-            font-size: 14px;
-            text-transform: uppercase;
-            box-shadow: inset 0px 0px 5px rgba(0, 255, 0, 0.3);
-        }
-
-        /* Sección del reproductor integrado */
-        .player-section {
-            background: #17272f;
-            border: 2px solid #233b47;
-            border-radius: 4px;
-            padding: 15px;
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Estilo para el iframe oficial de MyRadioStream */
-        .player-section iframe {
-            border: none;
-            overflow: hidden;
-            background: transparent;
-        }
-
-        /* Panel de DJs / Estado */
-        .dj-panel {
-            background: #203540;
-            border: 1px solid #335566;
-            border-radius: 4px;
-            padding: 10px;
-            font-size: 12px;
-            color: #b3d1ff;
-            text-align: left;
-        }
-        .dj-panel div {
-            margin-bottom: 5px;
-        }
-        .dj-panel span {
+        body {
+            background: #000 url('https://images.habbo.com/c_images/reception/background_right_easter15.png') repeat;
+            background-color: #2b2b2b;
+            font-family: Verdana, Geneva, sans-serif;
             color: #fff;
-            font-weight: bold;
+            padding: 20px 10px;
         }
 
-        /* Footer con créditos retro */
+        .contenedor {
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0px 0px 0px 4px #111, 0px 0px 20px rgba(0,0,0,0.6);
+            border-radius: 6px;
+            overflow: hidden;
+            background: #2e2e2e;
+        }
+
+        /* BANNER */
+        .banner {
+            background: #121212;
+            border-bottom: 3px solid #1c1c1c;
+            text-align: center;
+        }
+
+        .banner img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* MENU ESTILO HABBO TABS */
+        .menu {
+            background: #1e1e1e;
+            border-bottom: 3px solid #41729F;
+            padding: 10px 10px 0 10px;
+            display: flex;
+            gap: 5px;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 8px 16px;
+            background: #41729F;
+            border-radius: 6px 6px 0 0;
+            border: 2px solid #111;
+            border-bottom: none;
+            text-shadow: 1px 1px 0px #22527a;
+            display: inline-block;
+        }
+
+        .menu a:hover {
+            background: #538cc6;
+        }
+
+        .menu a.active {
+            background: #8cb83e;
+            text-shadow: 1px 1px 0px #5c7e22;
+        }
+
+        /* CONTENIDO PRINCIPAL */
+        .panel {
+            padding: 15px;
+            background: #3a3a3a;
+        }
+
+        .zona-radio {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* BLOQUES ESTILO CAJAS HABBO */
+        .bloque {
+            background: #2b2b2b;
+            border: 2px solid #111;
+            border-radius: 5px;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .radio {
+            flex: 1.4;
+        }
+
+        .dj {
+            flex: 1;
+        }
+
+        /* TITULOS DE LAS CAJAS */
+        .titulo {
+            background: linear-gradient(to bottom, #4f4f4f, #333333);
+            padding: 10px;
+            border-bottom: 2px solid #111;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            text-shadow: 1px 1px 1px #000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .radio .titulo {
+            background: linear-gradient(to bottom, #bd3f3f, #8a2525);
+        }
+
+        .dj .titulo {
+            background: linear-gradient(to bottom, #4f964f, #2d662d);
+        }
+
+        .cuerpo {
+            padding: 15px;
+            text-align: center;
+        }
+
+        /* REPRODUCTOR NATIVO */
+        .player-habbo {
+            background: #1e1e1e;
+            border: 2px dashed #41729F;
+            border-radius: 4px;
+            padding: 20px 15px;
+            text-align: center;
+        }
+
+        .player-status {
+            font-size: 11px;
+            color: #aaa;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .player-habbo audio {
+            width: 100%;
+            outline: none;
+        }
+
+        /* ESTADO DJ */
+        .estado-online {
+            background: #47a047;
+            color: white;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 3px;
+            display: inline-block;
+            border: 1px solid #2d662d;
+            text-shadow: 1px 1px 0px #2d662d;
+        }
+
+        .dato {
+            margin-bottom: 15px;
+            border-bottom: 1px dashed #444;
+            padding-bottom: 10px;
+        }
+
+        .dato:last-child {
+            border: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .dato span {
+            display: block;
+            color: #f1b61c;
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-shadow: 1px 1px 0px #000;
+        }
+
+        .valor {
+            font-size: 14px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        /* FOOTER */
         .footer {
-            margin-top: 15px;
-            font-size: 10px;
-            color: #557a8c;
+            background: #111;
+            text-align: center;
+            padding: 12px;
+            font-size: 11px;
+            color: #777;
+            border-top: 2px solid #222;
+        }
+
+        /* RESPONSIVE */
+        @media(max-width:768px){
+            .zona-radio {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
+
 <body>
 
-    <div class="radio-container">
-        
-        <!-- Logo Principal -->
-        <div class="header">
-            <img src="https://i.imgur.com/bX9fXbK.png" alt="Habbo Logo">
-        </div>
+<div class="contenedor">
 
-        <!-- Pantalla de Estado / Marquesina -->
-        <div class="display-screen">
-            <marquee behavior="scroll" direction="left" scrollamount="4">
-                ¡Bienvenidos a HabbocabraXFM! • Sintoniza el mejor ritmo pixelado las 24/7 • Transmitiendo en directo...
-            </marquee>
-        </div>
-
-        <!-- Sección del Reproductor (Puente HTTPS Seguro) -->
-        <div class="player-section">
-            <iframe src="https://myradiostream.com/embed/42870" 
-                    width="300" 
-                    height="100" 
-                    frameborder="0" 
-                    scrolling="no">
-            </iframe>
-        </div>
-
-        <!-- Panel de Control para DJs -->
-        <div class="dj-panel">
-            <div>• Estado de la emisión: <span style="color: #00ff00;">ONLINE</span></div>
-            <div>• DJ Actual: <span>HabbocabraX</span></div>
-            <div>• Oyentes actuales: <span>Cargando...</span></div>
-        </div>
-
-        <!-- Créditos finales -->
-        <div class="footer">
-            HabbocabraXFM © 2026 - Diseñado con estética clásica de Habbo.
-        </div>
-
+    <div class="banner">
+        <img src="banner.png" alt="Habbo CabraX FM" onerror="this.src='https://i.imgur.com/LNZT1vH.png';">
     </div>
 
+    <div class="menu">
+        <a href="index.html" class="active">🏠 INICIO</a>
+        <a href="panel.html">🎙 PANEL DJ</a>
+    </div>
+
+    <div class="panel">
+        <div class="zona-radio">
+
+            <div class="bloque radio">
+                <div class="titulo">
+                    📻 EN SINTONÍA
+                </div>
+                <div class="cuerpo">
+                    
+                    <div class="player-habbo">
+                        <div class="player-status">Habbo CabraX FM Player</div>
+                        
+                        <!-- TU REPRODUCTOR CON EL TÚNEL DE RENDER -->
+                        <audio controls preload="none">
+                            <source src="PEGA_AQUÍ_TU_ENLACE_DE_RENDER" type="audio/mpeg">
+                            Tu navegador no soporta el reproductor de audio.
+                        </audio>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="bloque dj">
+                <div class="titulo">
+                    👤 DJ EN EMISIÓN
+                </div>
+                <div class="cuerpo">
+                    <div class="dato">
+                        <span>ESTADO</span>
+                        <div class="estado-online">● EMITIENDO EN VIVO</div>
+                    </div>
+
+                    <div class="dato">
+                        <span>DJ ACTUAL</span>
+                        <div id="dj-actual" class="valor">Esperando DJ...</div>
+                    </div>
+
+                    <div class="dato">
+                        <span>PROGRAMA</span>
+                        <div id="programa-actual" class="valor">Habbo CabraX FM</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="footer">
+        Habbo CabraX FM © 2026 - Conectando a la comunidad al estilo clásico.
+    </div>
+
+</div>
+
 </body>
+</html>
 </html>
