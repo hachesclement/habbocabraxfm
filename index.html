@@ -128,21 +128,22 @@
 
         .cuerpo {
             padding: 15px;
+            text-align: center;
         }
 
-        /* REPRODUCTOR NATIVO ESTILIZADO */
+        /* REPRODUCTOR NATIVO */
         .player-habbo {
             background: #1e1e1e;
             border: 2px dashed #41729F;
             border-radius: 4px;
-            padding: 15px;
+            padding: 20px 15px;
             text-align: center;
         }
 
         .player-status {
             font-size: 11px;
             color: #aaa;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -150,17 +151,6 @@
         .player-habbo audio {
             width: 100%;
             outline: none;
-        }
-
-        /* OCULTAMOS COMPLETAMENTE EL REPRODUCTOR ORIGINAL DE CASTER */
-        #bloque-invisible-caster {
-            position: absolute !important;
-            top: -9999px !important;
-            left: -9999px !important;
-            width: 1px !important;
-            height: 1px !important;
-            overflow: hidden !important;
-            opacity: 0 !important;
         }
 
         /* ESTADO DJ */
@@ -226,22 +216,18 @@
 
 <div class="contenedor">
 
-    <!-- BANNER -->
     <div class="banner">
         <img src="banner.png" alt="Habbo CabraX FM" onerror="this.src='https://i.imgur.com/LNZT1vH.png';">
     </div>
 
-    <!-- MENU -->
     <div class="menu">
         <a href="index.html" class="active">🏠 INICIO</a>
         <a href="panel.html">🎙 PANEL DJ</a>
     </div>
 
-    <!-- CONTENIDO -->
     <div class="panel">
         <div class="zona-radio">
 
-            <!-- CAJA DE LA RADIO -->
             <div class="bloque radio">
                 <div class="titulo">
                     📻 EN SINTONÍA
@@ -249,10 +235,10 @@
                 <div class="cuerpo">
                     
                     <div class="player-habbo">
-                        <div class="player-status">Reproductor Oficial Limpio</div>
+                        <div class="player-status">Habbo CabraX FM Player</div>
                         
-                        <!-- REPRODUCTOR NATIVO QUE VERÁN TUS USUARIOS -->
-                        <audio id="reproductor-limpio" controls preload="none">
+                        <audio controls preload="none">
+                            <source src="" type="audio/mpeg" id="reproductor-src">
                             Tu navegador no soporta el reproductor de audio.
                         </audio>
                     </div>
@@ -260,7 +246,6 @@
                 </div>
             </div>
 
-            <!-- CAJA DEL DJ -->
             <div class="bloque dj">
                 <div class="titulo">
                     👤 DJ EN EMISIÓN
@@ -286,46 +271,22 @@
         </div>
     </div>
 
-    <!-- FOOTER -->
     <div class="footer">
         Habbo CabraX FM © 2026 - Conectando a la comunidad al estilo clásico.
     </div>
 
 </div>
 
-<!-- TRUCO MAESTRO: Caster se procesa aquí de forma totalmente invisible para el ojo humano -->
-<div id="bloque-invisible-caster">
-    <div
-        data-type="newStreamPlayer"
-        data-publicToken="b8bc4130-c5a6-4d87-9841-c2254d1bd665"
-        data-theme="dark"
-        data-color="e81e4d"
-        data-channelId="a23e4e3b-cead-4805-9d75-0dd9e0afe06a"
-        data-rendered="false"
-        class="cstrEmbed">
-        <a href="https://www.caster.fm">Shoutcast Hosting</a>
-        <a href="https://www.caster.fm">Stream Hosting</a>
-        <a href="https://www.caster.fm">Radio Server Hosting</a>
-    </div>
-</div>
-
-<!-- SCRIPT DE CASTER REQUERIDO -->
-<script src="https://cdn.cloud.caster.fm/widgets/embed.js"></script>
-
-<!-- SCRIPT INTELIGENTE EXCRIPTOR DE AUDIO -->
 <script>
-    // Esperamos a que Caster monte su iframe secreto y le robamos la señal de audio
-    window.addEventListener('load', function() {
-        setTimeout(function() {
-            var iframeCaster = document.querySelector('#bloque-invisible-caster iframe');
-            if (iframeCaster) {
-                // Sacamos la URL exacta que genera Caster para transmitir el mp3
-                var streamUrl = "https://ssl.caster.fm:8443/listen.mp3?auth=" + "a23e4e3b-cead-4805-9d75-0dd9e0afe06a";
-                var audioNativo = document.getElementById('reproductor-limpio');
-                audioNativo.src = streamUrl;
-            }
-        }, 2500); // Pequeño retraso para asegurar que Caster cargue de fondo
-    });
+    // Tus datos de Listen2MyRadio ya inyectados
+    const ipRadio = "109.169.23.84"; 
+    const puertoRadio = "22887";
+
+    // Generamos la URL segura usando un proxy para evitar bloqueos HTTPS en GitHub Pages
+    const urlStream = `https://corsproxy.io/?url=http://${ipRadio}:${puertoRadio}/stream`;
+    
+    // Asignamos la dirección al reproductor nativo al cargar la página
+    document.getElementById('reproductor-src').src = urlStream;
 </script>
 
 </body>
