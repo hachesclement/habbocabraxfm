@@ -14,7 +14,7 @@
         }
 
         body {
-            background: #000 url('https://images.habbo.com/c_images/reception/background_right_easter15.png') repeat; /* Fondo clásico opcional */
+            background: #000 url('https://images.habbo.com/c_images/reception/background_right_easter15.png') repeat;
             background-color: #2b2b2b;
             font-family: Verdana, Geneva, sans-serif;
             color: #fff;
@@ -130,26 +130,39 @@
             padding: 15px;
         }
 
-        /* REPRODUCTOR PERSONALIZADO SIN PUBLICIDAD */
+        /* REPRODUCTOR ADAPTADO - AD BLOCK VISUAL */
         .player-habbo {
             background: #1e1e1e;
             border: 2px dashed #41729F;
             border-radius: 4px;
-            padding: 15px;
+            padding: 10px;
             text-align: center;
-        }
-
-        .player-habbo audio {
-            width: 100%;
-            margin-top: 10px;
-            outline: none;
         }
 
         .player-status {
             font-size: 11px;
             color: #aaa;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             text-transform: uppercase;
+        }
+
+        /* Escondemos la publicidad recortando el contenedor del widget */
+        .contenedor-oculto-caster {
+            width: 100%;
+            max-width: 350px;
+            height: 68px; /* Altura estratégica para pillar solo los controles de Caster */
+            overflow: hidden;
+            position: relative;
+            margin: 0 auto;
+            border-radius: 4px;
+        }
+
+        .contenedor-oculto-caster iframe, 
+        .contenedor-oculto-caster .cstrEmbed {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100% !important;
         }
 
         /* ESTADO DJ */
@@ -215,44 +228,44 @@
 
 <div class="contenedor">
 
-    <!-- BANNER -->
     <div class="banner">
-        <!-- Si tienes el archivo banner.png en GitHub se verá aquí -->
         <img src="banner.png" alt="Habbo CabraX FM" onerror="this.src='https://i.imgur.com/LNZT1vH.png';">
     </div>
 
-    <!-- MENU -->
     <div class="menu">
         <a href="index.html" class="active">🏠 INICIO</a>
         <a href="panel.html">🎙 PANEL DJ</a>
     </div>
 
-    <!-- CONTENIDO -->
     <div class="panel">
         <div class="zona-radio">
 
-            <!-- CAJA DE LA RADIO -->
             <div class="bloque radio">
                 <div class="titulo">
                     📻 EN SINTONÍA
                 </div>
                 <div class="cuerpo">
+                    
                     <div class="player-habbo">
-                        <div class="player-status">Reproductor Oficial (Sin Anuncios)</div>
+                        <div class="player-status">Reproductor Oficial (Habbo CabraX)</div>
                         
-                        <!-- REPRODUCTOR HTML5 LIMPIO -->
-                        <!-- Reemplaza 'tu_usuario' por tu nombre de usuario exacto en Caster.fm -->
-                        <audio controls preload="none">
-                            <source src="https://shaincast.caster.fm:2199/tunein/tu_usuario.pls" type="audio/x-scpls">
-                            <source src="https://ssl.caster.fm:8443/listen.mp3?auth=a23e4e3b-cead-4805-9d75-0dd9e0afe06a" type="audio/mpeg">
-                            Tu navegador no soporta este reproductor.
-                        </audio>
+                        <div class="contenedor-oculto-caster">
+                            <div
+                                data-type="newStreamPlayer"
+                                data-publicToken="b8bc4130-c5a6-4d87-9841-c2254d1bd665"
+                                data-theme="dark"
+                                data-color="e81e4d"
+                                data-channelId="a23e4e3b-cead-4805-9d75-0dd9e0afe06a"
+                                data-rendered="false"
+                                class="cstrEmbed">
+                            </div>
+                        </div>
 
                     </div>
+
                 </div>
             </div>
 
-            <!-- CAJA DEL DJ -->
             <div class="bloque dj">
                 <div class="titulo">
                     👤 DJ EN EMISIÓN
@@ -278,12 +291,13 @@
         </div>
     </div>
 
-    <!-- FOOTER -->
     <div class="footer">
         Habbo CabraX FM © 2026 - Conectando a la comunidad al estilo clásico.
     </div>
 
 </div>
+
+<script src="https://cdn.cloud.caster.fm/widgets/embed.js"></script>
 
 </body>
 </html>
