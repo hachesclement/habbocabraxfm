@@ -136,7 +136,7 @@
             background: #1e1e1e;
             border: 2px dashed #41729F;
             border-radius: 4px;
-            padding: 10px;
+            padding: 15px;
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -154,14 +154,10 @@
             font-weight: bold;
         }
 
-        /* Configuración limpia del iframe de la radio */
-        .player-habbo iframe {
-            width: 100%;
-            height: 90px;
-            border: none;
-            display: block;
-            background: transparent;
-            overflow: hidden;
+        /* Evita que el script nativo rompa el diseño */
+        .player-habbo iframe, .player-habbo div {
+            max-width: 100% !important;
+            margin: 0 auto !important;
         }
 
         /* ESTADO DJ */
@@ -248,11 +244,12 @@
                     <div class="player-habbo">
                         <div class="player-status">Habbo CabraX FM Player</div>
                         
-                        <!-- ENLACE CORREGIDO PARA EVITAR TEXTO PLANO Y REDIRECCIONES -->
-                        <iframe src="https://myradiostream.com/habbocabrax" 
-                                scrolling="no" 
-                                frameborder="0">
-                        </iframe>
+                        <!-- SCRIPT NATIVO CON ANTIDOTO PARA REDIRECCIONES -->
+                        <script>
+                            // Truco: Bloqueamos que el reproductor abra nuevas ventanas/pestañas
+                            window.open = function() { return null; };
+                        </script>
+                        <script src="https://myradiostream.com/embed/habbocabrax"></script>
                     </div>
 
                 </div>
@@ -291,3 +288,4 @@
 
 </body>
 </html>
+
