@@ -131,12 +131,12 @@
             text-align: center;
         }
 
-        /* CONTENEDOR DEL SCRIPT REPRODUCTOR */
+        /* CONTENEDOR DEL REPRODUCTOR MANTENIENDO EL DISEÑO */
         .player-habbo {
             background: #1e1e1e;
             border: 2px dashed #41729F;
             border-radius: 4px;
-            padding: 15px;
+            padding: 10px;
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -154,11 +154,13 @@
             font-weight: bold;
         }
 
-        /* Ajuste para que el widget de MyRadioStream no se rompa */
+        /* Forzamos que el iframe ocupe el espacio correcto sin bordes feos */
         .player-habbo iframe {
-            max-width: 100% !important;
-            margin: 0 auto !important;
-            display: block !important;
+            width: 100%;
+            height: 100px;
+            border: none;
+            display: block;
+            background: transparent;
         }
 
         /* ESTADO DJ */
@@ -238,14 +240,18 @@
 
             <div class="bloque radio">
                 <div class="titulo">
-                    Exchange-Alt 📻 EN SINTONÍA
+                    📻 EN SINTONÍA
                 </div>
                 <div class="cuerpo">
                     
                     <div class="player-habbo">
                         <div class="player-status">Habbo CabraX FM Player</div>
                         
-                        <script src="https://myradiostream.com/embed/habbocabrax"></script>
+                        <!-- NUEVO CONTENEDOR INCRUSTADO: Evita la redirección al darle Play -->
+                        <iframe src="https://myradiostream.com/embed/habbocabrax" 
+                                scrolling="no" 
+                                frameborder="0">
+                        </iframe>
                     </div>
 
                 </div>
@@ -253,7 +259,7 @@
 
             <div class="bloque dj">
                 <div class="titulo">
-                    User 👤 DJ EN EMISIÓN
+                    👤 DJ EN EMISIÓN
                 </div>
                 <div class="cuerpo">
                     <div class="dato">
