@@ -131,26 +131,34 @@
             text-align: center;
         }
 
-        /* REPRODUCTOR NATIVO SEGURO */
+        /* CONTENEDOR DEL IFRAME DE AUDIO INCRUSTADO */
         .player-habbo {
             background: #1e1e1e;
             border: 2px dashed #41729F;
             border-radius: 4px;
-            padding: 20px 15px;
-            text-align: center;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         .player-status {
             font-size: 11px;
             color: #aaa;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        .player-habbo audio {
+        /* IFRAME TOTALMENTE AJUSTADO Y SEGURO */
+        .iframe-reproductor {
             width: 100%;
-            outline: none;
+            max-width: 320px;
+            height: 90px;
+            border: none;
+            overflow: hidden;
+            background: transparent;
         }
 
         /* ESTADO DJ */
@@ -241,11 +249,13 @@
                     <div class="player-habbo">
                         <div class="player-status">Habbo CabraX FM Player</div>
                         
-                        <!-- REPRODUCTOR HTML5 DIRECTO DESDE EL PUERTO SEGURO DE CASTER -->
-                        <audio controls preload="none">
-                            <source src="https://shoutcast.caster.fm:2199/tunein/a23e4e3b-cead-4805-9d75-0dd9e0afe06a.pls" type="audio/mpeg" id="source-caster">
-                            Tu navegador no soporta el reproductor de audio.
-                        </audio>
+                        <!-- IFRAME SEGURO CON DIRECTIVA DE REFERRER PARA EVITAR EL BLOQUEO DE SILENCIO -->
+                        <iframe 
+                            src="https://player.caster.fm/index.php?channel=a23e4e3b-cead-4805-9d75-0dd9e0afe06a&theme=dark&color=41729F" 
+                            class="iframe-reproductor"
+                            referrerpolicy="no-referrer"
+                            scrolling="no">
+                        </iframe>
                     </div>
 
                 </div>
@@ -283,14 +293,6 @@
     </div>
 
 </div>
-
-<script>
-    // Forzamos la carga del stream directo en formato MP3 compatible con el widget
-    document.getElementById('source-caster').src = "https://ssl.caster.fm:8443/listen.mp3?shaincast=a23e4e3b-cead-4805-9d75-0dd9e0afe06a";
-</script>
-
-</body>
-</html>
 
 </body>
 </html>
