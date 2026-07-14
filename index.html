@@ -16,8 +16,6 @@
 }
 
 body{
-    margin:0;
-    padding:0;
     background:#081525;
     font-family:Verdana, Arial, sans-serif;
     color:#fff;
@@ -35,9 +33,11 @@ body{
     background:#04111f;
 }
 
-.banner img {
-    width: 100%;
+.banner img{
+    width:100%;
+    display:block;
 }
+
 
 /* MENU */
 
@@ -62,7 +62,8 @@ body{
     background:#15508f;
 }
 
-/* PANEL PRINCIPAL */
+
+/* PANEL */
 
 .panel{
     margin-top:10px;
@@ -76,6 +77,7 @@ body{
     gap:10px;
 }
 
+
 /* BLOQUES */
 
 .bloque{
@@ -84,12 +86,13 @@ body{
 }
 
 .radio{
-    width:55%;
+    width:60%;
 }
 
 .dj{
     width:40%;
 }
+
 
 /* TITULOS */
 
@@ -101,11 +104,13 @@ body{
     font-weight:bold;
 }
 
+
 /* CONTENIDO */
 
 .cuerpo{
     padding:15px;
 }
+
 
 /* DJ */
 
@@ -131,6 +136,7 @@ body{
     font-size:16px;
 }
 
+
 /* FOOTER */
 
 .footer{
@@ -141,6 +147,7 @@ body{
     padding:12px;
     font-size:12px;
 }
+
 
 /* MOVIL */
 
@@ -161,47 +168,54 @@ body{
 
 </head>
 
+
 <body>
 
 <div class="contenedor">
 
-    <!-- BANNER -->
 
-    <div class="banner">
-        <img src="banner.png" alt="Habbo CabraX FM">
-    </div>
+<!-- BANNER -->
 
-    <!-- MENU -->
+<div class="banner">
+    <img src="banner.png" alt="Habbo CabraX FM">
+</div>
 
-    <div class="menu">
-        <a href="index.html">🏠 INICIO</a>
-        <a href="panel.html">🎙 PANEL DJ</a>
-    </div>
 
-    <!-- CONTENIDO -->
+<!-- MENU -->
 
-    <div class="panel">
+<div class="menu">
+    <a href="index.html">🏠 INICIO</a>
+    <a href="panel.html">🎙 PANEL DJ</a>
+</div>
 
-        <div class="zona-radio">
 
-            <!-- RADIO -->
 
-            <div class="bloque radio">
+<!-- CONTENIDO -->
 
-                <div class="titulo">
-                    🔴 RADIO EN DIRECTO
-                </div>
+<div class="panel">
 
-                <div class="cuerpo">
+<div class="zona-radio">
 
-                    <div class="cstrEmbed">
-  <div 
-data-type="newStreamPlayer" 
-data-publicToken="b8bc4130-c5a6-4d87-9841-c2254d1bd665" 
-data-theme="dark" 
-data-color="e81e4d" 
-data-channelId="a23e4e3b-cead-4805-9d75-0dd9e0afe06a" 
-data-rendered="false" 
+
+<!-- RADIO -->
+
+<div class="bloque radio">
+
+<div class="titulo">
+🔴 RADIO EN DIRECTO
+</div>
+
+
+<div class="cuerpo">
+
+
+<div 
+data-type="newStreamPlayer"
+data-publicToken="b8bc4130-c5a6-4d87-9841-c2254d1bd665"
+data-theme="dark"
+data-color="e81e4d"
+data-channelId="a23e4e3b-cead-4805-9d75-0dd9e0afe06a"
+data-rendered="false"
 class="cstrEmbed">
 
 <a href="https://www.caster.fm">Shoutcast Hosting</a>
@@ -210,9 +224,85 @@ class="cstrEmbed">
 
 </div>
 
-                </div>
 
-            </div>
+</div>
+
+</div>
+
+
+
+<!-- DJ -->
+
+<div class="bloque dj">
+
+<div class="titulo">
+🎙 DJ EN EMISIÓN
+</div>
+
+
+<div class="cuerpo">
+
+
+<div class="dato">
+
+<span>ESTADO</span>
+
+<div class="estado-online">
+🟢 RADIO ONLINE
+</div>
+
+</div>
+
+
+
+<div class="dato">
+
+<span>DJ ACTUAL</span>
+
+<div id="dj-actual" class="valor">
+Esperando DJ...
+</div>
+
+</div>
+
+
+
+<div class="dato">
+
+<span>PROGRAMA</span>
+
+<div id="programa-actual" class="valor">
+Habbo CabraX FM
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<div class="footer">
+Habbo CabraX FM © 2026
+</div>
+
+
+</div>
+
+
+<script src="https://cdn.cloud.caster.fm/widgets/embed.js"></script>
+
+
+</body>
+
+</html>
 
             <!-- DJ -->
 
