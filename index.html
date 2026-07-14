@@ -3,41 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Habbo CabraX FM</title>
+    <title>Habbo Radio - HabbocabraXFM</title>
     <style>
+        /* Fondo clásico de Habbo */
         body {
-            background: #000 url('https://images.habbo.com/c_images/reception/background_right_easter15.png') repeat;
-            font-family: Verdana, sans-serif;
+            background-image: url('https://i.imgur.com/b971M3w.png'); /* Fondo de la comunidad Habbo */
+            background-color: #2b2b2b;
+            background-repeat: repeat;
+            font-family: 'Verdana', sans-serif;
             color: #fff;
-            text-align: center;
-            padding: 50px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
-        .contenedor {
-            max-width: 500px;
-            margin: 0 auto;
-            background: #2e2e2e;
-            border: 3px solid #111;
+
+        /* Contenedor principal estilo Habbo Consola / Caja */
+        .radio-container {
+            background: #111e24;
+            border: 3px solid #4a748c;
             border-radius: 6px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.7), inset 0px 0px 10px rgba(0,0,0,0.5);
+            width: 450px;
             padding: 20px;
-            box-shadow: 0px 0px 15px rgba(0,0,0,0.5);
+            text-align: center;
+            position: relative;
         }
-        h1 { font-size: 18px; margin-bottom: 15px; color: #f1b61c; }
-        audio { width: 100%; margin-top: 15px; }
+
+        /* Encabezado con logo de Habbo */
+        .header {
+            margin-bottom: 15px;
+        }
+        .header img {
+            max-width: 180px;
+        }
+
+        /* Cuadro de texto / Marquesina estilo consola antigua */
+        .display-screen {
+            background-color: #000;
+            border: 2px solid #334e5a;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 20px;
+            color: #00ff00; /* Verde fósforo clásico */
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+            box-shadow: inset 0px 0px 5px rgba(0, 255, 0, 0.3);
+        }
+
+        /* Sección del reproductor integrado */
+        .player-section {
+            background: #17272f;
+            border: 2px solid #233b47;
+            border-radius: 4px;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Estilo para el iframe oficial de MyRadioStream */
+        .player-section iframe {
+            border: none;
+            overflow: hidden;
+            background: transparent;
+        }
+
+        /* Panel de DJs / Estado */
+        .dj-panel {
+            background: #203540;
+            border: 1px solid #335566;
+            border-radius: 4px;
+            padding: 10px;
+            font-size: 12px;
+            color: #b3d1ff;
+            text-align: left;
+        }
+        .dj-panel div {
+            margin-bottom: 5px;
+        }
+        .dj-panel span {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        /* Footer con créditos retro */
+        .footer {
+            margin-top: 15px;
+            font-size: 10px;
+            color: #557a8c;
+        }
     </style>
 </head>
 <body>
 
-<div class="contenedor">
-    <h1>📻 Habbo CabraX FM</h1>
-    <p>¡Señal en vivo sin anuncios!</p>
-    
-    <!-- TRUCO DIRECTO SIN PAGINAS EXTRA -->
-    <audio controls preload="none">
-        <source src="https://api.allorigins.win/raw?url=http://s13.myradiostream.com:42870/;stream.mp3" type="audio/mpeg">
-        Tu navegador no soporta el audio.
-    </audio>
-</div>
+    <div class="radio-container">
+        
+        <!-- Logo Principal -->
+        <div class="header">
+            <img src="https://i.imgur.com/bX9fXbK.png" alt="Habbo Logo">
+        </div>
+
+        <!-- Pantalla de Estado / Marquesina -->
+        <div class="display-screen">
+            <marquee behavior="scroll" direction="left" scrollamount="4">
+                ¡Bienvenidos a HabbocabraXFM! • Sintoniza el mejor ritmo pixelado las 24/7 • Transmitiendo en directo...
+            </marquee>
+        </div>
+
+        <!-- Sección del Reproductor (Puente HTTPS Seguro) -->
+        <div class="player-section">
+            <iframe src="https://myradiostream.com/embed/42870" 
+                    width="300" 
+                    height="100" 
+                    frameborder="0" 
+                    scrolling="no">
+            </iframe>
+        </div>
+
+        <!-- Panel de Control para DJs -->
+        <div class="dj-panel">
+            <div>• Estado de la emisión: <span style="color: #00ff00;">ONLINE</span></div>
+            <div>• DJ Actual: <span>HabbocabraX</span></div>
+            <div>• Oyentes actuales: <span>Cargando...</span></div>
+        </div>
+
+        <!-- Créditos finales -->
+        <div class="footer">
+            HabbocabraXFM © 2026 - Diseñado con estética clásica de Habbo.
+        </div>
+
+    </div>
 
 </body>
-</html>
 </html>
