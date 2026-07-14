@@ -131,34 +131,26 @@
             text-align: center;
         }
 
-        /* CONTENEDOR DEL IFRAME DE AUDIO INCRUSTADO */
+        /* REPRODUCTOR NATIVO DE AUDIO */
         .player-habbo {
             background: #1e1e1e;
             border: 2px dashed #41729F;
             border-radius: 4px;
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            padding: 20px 15px;
+            text-align: center;
         }
 
         .player-status {
             font-size: 11px;
             color: #aaa;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        /* IFRAME TOTALMENTE AJUSTADO Y SEGURO */
-        .iframe-reproductor {
+        .player-habbo audio {
             width: 100%;
-            max-width: 320px;
-            height: 90px;
-            border: none;
-            overflow: hidden;
-            background: transparent;
+            outline: none;
         }
 
         /* ESTADO DJ */
@@ -249,13 +241,11 @@
                     <div class="player-habbo">
                         <div class="player-status">Habbo CabraX FM Player</div>
                         
-                        <!-- IFRAME SEGURO CON DIRECTIVA DE REFERRER PARA EVITAR EL BLOQUEO DE SILENCIO -->
-                        <iframe 
-                            src="https://player.caster.fm/index.php?channel=a23e4e3b-cead-4805-9d75-0dd9e0afe06a&theme=dark&color=41729F" 
-                            class="iframe-reproductor"
-                            referrerpolicy="no-referrer"
-                            scrolling="no">
-                        </iframe>
+                        <!-- REPRODUCTOR HTML5 CON CONEXIÓN ENMASCARADA -->
+                        <audio controls preload="none">
+                            <source src="https://images.weserv.nl/?url=ssl.caster.fm:8443/listen.mp3?auth=a23e4e3b-cead-4805-9d75-0dd9e0afe06a&fn=stream.mp3" type="audio/mpeg">
+                            Tu navegador no soporta el reproductor de audio.
+                        </audio>
                     </div>
 
                 </div>
