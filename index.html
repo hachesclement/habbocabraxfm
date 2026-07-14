@@ -128,46 +128,29 @@
 
         .cuerpo {
             padding: 15px;
+            text-align: center;
         }
 
-        /* CONTENEDOR INTEGRADO DEL WIDGET OFICIAL CASTER */
+        /* REPRODUCTOR NATIVO SEGURO */
         .player-habbo {
             background: #1e1e1e;
             border: 2px dashed #41729F;
             border-radius: 4px;
-            padding: 12px;
+            padding: 20px 15px;
             text-align: center;
         }
 
         .player-status {
             font-size: 11px;
             color: #aaa;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* Ajustamos el contenedor para darle el espacio exacto que pide Caster para no romperse */
-        .contenedor-caster-fijo {
+        .player-habbo audio {
             width: 100%;
-            max-width: 360px;
-            margin: 0 auto;
-            background: #222;
-            padding: 10px;
-            border-radius: 4px;
-            border: 1px solid #111;
-        }
-
-        /* Estilos limpios para que los links requeridos no rompan el diseño gráfico */
-        .cstrEmbed a {
-            display: inline-block !important;
-            color: #41729F !important;
-            font-size: 10px !important;
-            margin: 5px 4px 0 4px !important;
-            text-decoration: none !important;
-        }
-        
-        .cstrEmbed a:hover {
-            text-decoration: underline !important;
+            outline: none;
         }
 
         /* ESTADO DJ */
@@ -256,24 +239,13 @@
                 <div class="cuerpo">
                     
                     <div class="player-habbo">
-                        <div class="player-status">Reproductor Oficial (Habbo CabraX)</div>
+                        <div class="player-status">Habbo CabraX FM Player</div>
                         
-                        <!-- Contenedor con medidas naturales para que el reproductor de Caster cargue entero y con play -->
-                        <div class="contenedor-caster-fijo">
-                            <div
-                                data-type="newStreamPlayer"
-                                data-publicToken="b8bc4130-c5a6-4d87-9841-c2254d1bd665"
-                                data-theme="dark"
-                                data-color="e81e4d"
-                                data-channelId="a23e4e3b-cead-4805-9d75-0dd9e0afe06a"
-                                data-rendered="false"
-                                class="cstrEmbed">
-                                <!-- Enlaces requeridos visibles para evitar el error 'Powered by' -->
-                                <a href="https://www.caster.fm" target="_blank">Shoutcast Hosting</a> | 
-                                <a href="https://www.caster.fm" target="_blank">Stream Hosting</a>
-                            </div>
-                        </div>
-
+                        <!-- REPRODUCTOR HTML5 DIRECTO DESDE EL PUERTO SEGURO DE CASTER -->
+                        <audio controls preload="none">
+                            <source src="https://shoutcast.caster.fm:2199/tunein/a23e4e3b-cead-4805-9d75-0dd9e0afe06a.pls" type="audio/mpeg" id="source-caster">
+                            Tu navegador no soporta el reproductor de audio.
+                        </audio>
                     </div>
 
                 </div>
@@ -312,8 +284,10 @@
 
 </div>
 
-<!-- SCRIPT OFICIAL DE CASTER REQUERIDO -->
-<script src="https://cdn.cloud.caster.fm/widgets/embed.js"></script>
+<script>
+    // Forzamos la carga del stream directo en formato MP3 compatible con el widget
+    document.getElementById('source-caster').src = "https://ssl.caster.fm:8443/listen.mp3?shaincast=a23e4e3b-cead-4805-9d75-0dd9e0afe06a";
+</script>
 
 </body>
 </html>
