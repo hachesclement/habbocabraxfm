@@ -29,7 +29,7 @@
             border-radius: 4px;
             box-shadow: 0px 4px 20px rgba(0,0,0,0.6);
             overflow: hidden;
-            background: #e3eff5; /* Color gris-azul de las ventanas de Habbo */
+            background: #e3eff5; /* Ventana Habbo */
         }
 
         .banner { 
@@ -98,82 +98,113 @@
 
         .cuerpo { padding: 15px; }
 
-        /* CONSOLA DE REPRODUCCIÓN */
-        .player-habbo {
-            background: #2b2b2b;
-            border: 2px solid #000;
-            border-radius: 4px;
-            padding: 15px;
-            text-align: center;
+        /* ========================================================
+           NUEVO REPRODUCTOR: CONSOLA CLÁSICA AMARILLA DE HABBO 
+           ======================================================== */
+        .consola-habbo {
+            background: #f7d117; /* El amarillo clásico exacto */
+            border: 3px solid #000;
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: inset -4px -4px 0px #c2a106, inset 4px 4px 0px #ffe863, 0px 4px 10px rgba(0,0,0,0.3);
             display: flex;
             flex-direction: column;
-            align-items: center;
             gap: 12px;
-            box-shadow: inset 2px 2px 0px #1c1c1c;
+            position: relative;
         }
 
-        .player-screen {
-            background: #000;
-            border: 2px solid #4a4a4a;
-            border-radius: 3px;
-            width: 100%;
+        /* Pantalla interna gris oscuro */
+        .consola-pantalla {
+            background: #3a3d40;
+            border: 3px solid #000;
+            border-radius: 6px;
+            padding: 10px;
+            min-height: 80px;
+            box-shadow: inset 2px 2px 0px #222;
+            color: #fff;
+            font-size: 11px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .consola-header-info {
+            border-bottom: 1px dashed #6b7278;
+            padding-bottom: 4px;
+            margin-bottom: 6px;
+            color: #ffe600;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .consola-msg {
+            color: #fff;
+            line-height: 1.3;
+        }
+
+        /* Zona inferior de mandos / botones */
+        .consola-controles {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #e2be0f;
             padding: 8px;
-            font-size: 10px;
-            color: #00ff00;
-            font-family: 'Courier New', Courier, monospace;
-            text-shadow: 0 0 4px #00ff00;
-            text-align: left;
+            border: 2px solid #000;
+            border-radius: 6px;
         }
 
-        .btn-play {
-            background: #76b124;
+        /* Botón de encendido/play estilo botón físico Habbo */
+        .btn-consola-play {
+            background: #628c3c;
+            color: #fff;
             border: 2px solid #000;
-            border-bottom: 5px solid #497111;
-            border-radius: 3px;
-            color: white;
+            border-bottom: 4px solid #3d5924;
+            border-radius: 4px;
             font-size: 11px;
             font-weight: bold;
-            padding: 8px 24px;
+            padding: 6px 16px;
             cursor: pointer;
             text-shadow: 1px 1px 0px #000;
         }
 
-        .btn-play:active {
-            border-bottom: 2px solid #000;
-            transform: translateY(3px);
+        .btn-consola-play:active {
+            border-bottom-width: 2px;
+            transform: translateY(2px);
         }
 
-        .btn-play.playing {
-            background: #d43535;
-            border-bottom-color: #8c1e1e;
+        .btn-consola-play.playing {
+            background: #b13d3d;
+            border-bottom-color: #732424;
         }
 
-        .volume-container {
+        /* Control de volumen integrado */
+        .consola-volumen {
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 11px;
-            color: #fff;
+            gap: 6px;
+            color: #000;
+            font-weight: bold;
         }
 
-        .volume-slider {
+        .consola-slider {
             -webkit-appearance: none;
-            width: 110px;
-            height: 10px;
-            background: #111;
-            border: 1px solid #4a4a4a;
+            width: 80px;
+            height: 8px;
+            background: #3a3d40;
+            border: 2px solid #000;
+            outline: none;
         }
 
-        .volume-slider::-webkit-slider-thumb {
+        .consola-slider::-webkit-slider-thumb {
             -webkit-appearance: none;
-            width: 14px;
+            width: 10px;
             height: 14px;
-            background: #316c95;
+            background: #fff;
             border: 2px solid #000;
             cursor: pointer;
         }
 
-        /* INFORMACIÓN DJ */
+        /* DETALLES DE TEXTO INTERNOS */
         .dj-info {
             display: flex;
             align-items: center;
@@ -227,22 +258,35 @@
     <div class="panel">
         <div class="zona-radio">
             
-            <!-- REPRODUCTOR -->
+            <!-- REPRODUCTOR CON CONSOLA HABBO -->
             <div class="bloque radio">
-                <div class="titulo">📻 RADIO CABRAX :: EN SINTONÍA</div>
+                <div class="titulo">📻 TRANSMISIÓN</div>
                 <div class="cuerpo">
-                    <div class="player-habbo">
-                        <div class="player-screen" id="stream-status">
-                            [STATUS]: OFFLINE _ ESPERANDO SEÑAL DE STREAM...
+                    
+                    <!-- CONSOLA AMARILLA RETRO -->
+                    <div class="consola-habbo">
+                        <div class="consola-pantalla">
+                            <div>
+                                <div class="consola-header-info">Habbo Consola v1.0</div>
+                                <div class="consola-msg" id="stream-status">Tienes (1) mensaje nuevo: "Radio offline. Esperando señal del DJ..."</div>
+                            </div>
                         </div>
-                        <audio id="habboAudio" src=""></audio>
-                        <button class="btn-play" id="playBtn" onclick="togglePlay()">REPRODUCIR</button>
-                        <div class="volume-container">
-                            <span>🔈</span>
-                            <input type="range" class="volume-slider" id="volumeControl" min="0" max="1" step="0.1" value="0.5" oninput="changeVolume(this.value)">
-                            <span>🔊</span>
+                        
+                        <div class="consola-controles">
+                            <!-- Botón verde de encendido -->
+                            <button class="btn-consola-play" id="playBtn" onclick="togglePlay()">ENCENDER</button>
+                            
+                            <!-- Control deslizante gris/blanco -->
+                            <div class="consola-volumen">
+                                <span>Vol:</span>
+                                <input type="range" class="consola-slider" id="volumeControl" min="0" max="1" step="0.1" value="0.5" oninput="changeVolume(this.value)">
+                            </div>
                         </div>
                     </div>
+
+                    <!-- AUDIO ELEMENT -->
+                    <audio id="habboAudio" src=""></audio>
+
                 </div>
             </div>
 
@@ -274,21 +318,21 @@
 
     function togglePlay() {
         if (audio.getAttribute('src') === "") {
-            alert("¡Diseño retro Habbo listo! Cuando pongas tu enlace directo .mp3 en el código del index.html, empezará a sonar.");
+            alert("¡Consola conectada! Pon el link .mp3 de tu streaming en el código para empezar a emitir.");
             return;
         }
         if (audio.paused) {
             audio.load(); 
             audio.play().then(() => {
                 playBtn.classList.add('playing');
-                playBtn.innerText = "PAUSAR";
-                statusText.innerText = "[LIVE]: TRANSMITIENDO AUDIO EN VIVO EN DIRECTO...";
+                playBtn.innerText = "APAGAR";
+                statusText.innerHTML = "<span style='color: #00ff00;'>● LIVE:</span> Conectado al stream de CabraX. ¡Disfruta de la música!";
             }).catch(error => { console.log("Error:", error); });
         } else {
             audio.pause();
             playBtn.classList.remove('playing');
-            playBtn.innerText = "REPRODUCIR";
-            statusText.innerText = "[STATUS]: EN PAUSA - SEÑAL EN ESPERA.";
+            playBtn.innerText = "ENCENDER";
+            statusText.innerText = "Consola en pausa. Señal en espera...";
         }
     }
 
