@@ -15,13 +15,25 @@
         }
 
        body {
-            /* FONTO MÍTICO DE NUBES Y VISTA DEL HOTEL REPARADO */
-            background: url('https://i.imgur.com/v8p0Eis.png') no-repeat top center fixed;
-            background-size: cover; /* Hace que cubra toda la pantalla adaptándose a PC o móvil */
-            background-color: #4ca3d5; /* Color de respaldo por si acaso */
+            /* FONDO HABBO GENERADO POR CÓDIGO (NUNCA SE ROMPE) */
+            background: 
+                /* Nube pixelada inferior 3 */
+                linear-gradient(90deg, transparent 40%, #ffffff 40%, #ffffff 60%, transparent 60%) bottom 30px left 0/150px 40px no-repeat,
+                /* Nube pixelada inferior 2 */
+                linear-gradient(90deg, transparent 10%, #ffffff 10%, #ffffff 35%, transparent 35%) bottom 50px left 0/200px 50px no-repeat,
+                /* Nube pixelada inferior 1 */
+                linear-gradient(90deg, transparent 60%, #ffffff 60%, #ffffff 90%, transparent 90%) bottom 20px left 0/250px 45px no-repeat,
+                /* Base de nubes blanca en el suelo */
+                linear-gradient(to top, #ffffff 40px, transparent 40px),
+                /* Degradado del cielo azul Habbo */
+                linear-gradient(to bottom, #308ec4 0%, #76cbfa 70%, #bce5fc 100%);
+            
+            background-color: #308ec4;
+            background-attachment: fixed;
             color: #000;
             padding: 40px 10px;
             font-size: 11px;
+            min-height: 100vh;
         }
 
         .contenedor {
