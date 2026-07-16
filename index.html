@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Habbo CabraX FM</title>
     <style>
-        /* ESTILO GENERAL RETRO HABBO COLEGIAL / PIXEL */
+        /* ESTILO GENERAL RETRO HABBO SÓLIDO */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: Volter, Verdana, Geneva, sans-serif; image-rendering: pixelated; }
 
         @font-face {
@@ -14,22 +14,8 @@
             src: url('https://fonts.cdnfonts.com/s/16231/Volter__28Goldfish_29.woff') format('woff');
         }
 
-       body {
-            /* FONDO HABBO GENERADO POR CÓDIGO (NUNCA SE ROMPE) */
-            background: 
-                /* Nube pixelada inferior 3 */
-                linear-gradient(90deg, transparent 40%, #ffffff 40%, #ffffff 60%, transparent 60%) bottom 30px left 0/150px 40px no-repeat,
-                /* Nube pixelada inferior 2 */
-                linear-gradient(90deg, transparent 10%, #ffffff 10%, #ffffff 35%, transparent 35%) bottom 50px left 0/200px 50px no-repeat,
-                /* Nube pixelada inferior 1 */
-                linear-gradient(90deg, transparent 60%, #ffffff 60%, #ffffff 90%, transparent 90%) bottom 20px left 0/250px 45px no-repeat,
-                /* Base de nubes blanca en el suelo */
-                linear-gradient(to top, #ffffff 40px, transparent 40px),
-                /* Degradado del cielo azul Habbo */
-                linear-gradient(to bottom, #308ec4 0%, #76cbfa 70%, #bce5fc 100%);
-            
-            background-color: #308ec4;
-            background-attachment: fixed;
+        body {
+            background-color: #316c95; /* Azul oscuro corporativo Habbo */
             color: #000;
             padding: 40px 10px;
             font-size: 11px;
@@ -41,9 +27,9 @@
             margin: 0 auto;
             border: 2px solid #000;
             border-radius: 4px;
-            box-shadow: 0px 4px 20px rgba(0,0,0,0.8);
+            box-shadow: 0px 4px 20px rgba(0,0,0,0.6);
             overflow: hidden;
-            background: #e3eff5; /* Color clásico del fondo de ventanas Habbo */
+            background: #e3eff5; /* Color gris-azul de las ventanas de Habbo */
         }
 
         .banner { 
@@ -53,7 +39,7 @@
         }
         .banner img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
 
-        /* PESTAÑAS ESTILO NAVEGADOR HABBO */
+        /* PESTAÑAS ESTILO INTERFAZ */
         .menu {
             background: #c3dbe7;
             padding: 8px 10px 0 10px;
@@ -78,7 +64,6 @@
         .menu a.active { 
             background: #e3eff5; 
             color: #000;
-            text-shadow: none;
             position: relative;
             top: 2px;
             padding-bottom: 8px;
@@ -87,7 +72,7 @@
         .panel { padding: 15px; }
         .zona-radio { display: flex; gap: 15px; }
 
-        /* CAJAS CLÁSICAS DE HABBO */
+        /* VISTAS DE BLOQUES */
         .bloque { 
             background: #ffffff; 
             border: 2px solid #000; 
@@ -99,7 +84,6 @@
         .radio { flex: 1.4; }
         .dj { flex: 1; }
 
-        /* CABECERAS HABBO DE VENTANA */
         .titulo {
             background: #739cb3;
             color: #fff;
@@ -108,14 +92,13 @@
             font-size: 11px; 
             font-weight: bold;
             text-shadow: 1px 1px 0px rgba(0,0,0,0.5);
-            letter-spacing: 0.5px;
         }
         .radio .titulo { background: #b13d3d; }
         .dj .titulo { background: #628c3c; }
 
         .cuerpo { padding: 15px; }
 
-        /* INTERFAZ DEL REPRODUCTOR ESTILO CONSOLA */
+        /* CONSOLA DE REPRODUCCIÓN */
         .player-habbo {
             background: #2b2b2b;
             border: 2px solid #000;
@@ -126,10 +109,9 @@
             flex-direction: column;
             align-items: center;
             gap: 12px;
-            box-shadow: inset 2px 2px 0px #1c1c1c, 0px 2px 4px rgba(0,0,0,0.4);
+            box-shadow: inset 2px 2px 0px #1c1c1c;
         }
 
-        /* Pantallita de estado retro */
         .player-screen {
             background: #000;
             border: 2px solid #4a4a4a;
@@ -141,11 +123,8 @@
             font-family: 'Courier New', Courier, monospace;
             text-shadow: 0 0 4px #00ff00;
             text-align: left;
-            overflow: hidden;
-            white-space: nowrap;
         }
 
-        /* BOTÓN ESTILO PIXEL PERFECTO */
         .btn-play {
             background: #76b124;
             border: 2px solid #000;
@@ -157,7 +136,6 @@
             padding: 8px 24px;
             cursor: pointer;
             text-shadow: 1px 1px 0px #000;
-            box-shadow: inset 1px 1px 0px #a4df4a;
         }
 
         .btn-play:active {
@@ -168,10 +146,8 @@
         .btn-play.playing {
             background: #d43535;
             border-bottom-color: #8c1e1e;
-            box-shadow: inset 1px 1px 0px #ff7373;
         }
 
-        /* CONTROL DE VOLUMEN */
         .volume-container {
             display: flex;
             align-items: center;
@@ -186,7 +162,6 @@
             height: 10px;
             background: #111;
             border: 1px solid #4a4a4a;
-            outline: none;
         }
 
         .volume-slider::-webkit-slider-thumb {
@@ -196,10 +171,9 @@
             background: #316c95;
             border: 2px solid #000;
             cursor: pointer;
-            box-shadow: inset 1px 1px 0px #73a7cc;
         }
 
-        /* DETALLES DE TEXTO INTERNOS */
+        /* INFORMACIÓN DJ */
         .dj-info {
             display: flex;
             align-items: center;
@@ -243,47 +217,36 @@
         <img src="banner.png" alt="Habbo CabraX FM" onerror="this.src='https://i.imgur.com/LNZT1vH.png';">
     </div>
 
-    <!-- MENÚ NAVEGACIÓN RETRO -->
+    <!-- MENÚ -->
     <div class="menu">
         <a href="index.html" class="active">🏠 INICIO</a>
         <a href="panel.html">🎙 PANEL DJ</a>
     </div>
 
-    <!-- CONTENIDO CENTRAL -->
+    <!-- CONTENIDO -->
     <div class="panel">
         <div class="zona-radio">
             
-            <!-- CAJA TRANSMISIÓN -->
+            <!-- REPRODUCTOR -->
             <div class="bloque radio">
                 <div class="titulo">📻 RADIO CABRAX :: EN SINTONÍA</div>
                 <div class="cuerpo">
                     <div class="player-habbo">
-                        
-                        <!-- PANTALLA DIGITAL DE EMISIÓN -->
                         <div class="player-screen" id="stream-status">
                             [STATUS]: OFFLINE _ ESPERANDO SEÑAL DE STREAM...
                         </div>
-                        
-                        <!-- AUDIO NATIVO -->
                         <audio id="habboAudio" src=""></audio>
-
-                        <!-- BOTÓN JUEGO PLAY/PAUSE -->
-                        <button class="btn-play" id="playBtn" onclick="togglePlay()">
-                            REPRODUCIR
-                        </button>
-
-                        <!-- VOLUMEN CONSOLA -->
+                        <button class="btn-play" id="playBtn" onclick="togglePlay()">REPRODUCIR</button>
                         <div class="volume-container">
                             <span>🔈</span>
                             <input type="range" class="volume-slider" id="volumeControl" min="0" max="1" step="0.1" value="0.5" oninput="changeVolume(this.value)">
                             <span>🔊</span>
                         </div>
-                        
                     </div>
                 </div>
             </div>
 
-            <!-- CAJA DJ CON AVATAR -->
+            <!-- DJ -->
             <div class="bloque dj">
                 <div class="titulo">👤 DJ MANAGER</div>
                 <div class="cuerpo">
@@ -300,16 +263,13 @@
         </div>
     </div>
 
-    <!-- PIE DE PÁGINA -->
     <div class="footer">Habbo CabraX FM © 2026 - Conectando píxeles.</div>
 </div>
 
-<!-- COMPORTAMIENTO DEL REPRODUCTOR -->
 <script>
     var audio = document.getElementById('habboAudio');
     var playBtn = document.getElementById('playBtn');
     var statusText = document.getElementById('stream-status');
-
     audio.volume = 0.5;
 
     function togglePlay() {
@@ -317,16 +277,13 @@
             alert("¡Diseño retro Habbo listo! Cuando pongas tu enlace directo .mp3 en el código del index.html, empezará a sonar.");
             return;
         }
-
         if (audio.paused) {
             audio.load(); 
             audio.play().then(() => {
                 playBtn.classList.add('playing');
                 playBtn.innerText = "PAUSAR";
                 statusText.innerText = "[LIVE]: TRANSMITIENDO AUDIO EN VIVO EN DIRECTO...";
-            }).catch(error => {
-                console.log("Error:", error);
-            });
+            }).catch(error => { console.log("Error:", error); });
         } else {
             audio.pause();
             playBtn.classList.remove('playing');
@@ -335,9 +292,7 @@
         }
     }
 
-    function changeVolume(val) {
-        audio.volume = val;
-    }
+    function changeVolume(val) { audio.volume = val; }
 </script>
 
 </body>
