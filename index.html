@@ -316,12 +316,15 @@
     var statusText = document.getElementById('stream-status');
     audio.volume = 0.5;
 
-    // Enlace directo de radio global (ZenoFM mp3 limpio), super compatible
- var urlRadio = "https://s3.free-shoutcast.com:18094/stream?type=http";
+    // Enlace con el truco clásico del punto y coma para forzar transmisiones SHOUTcast
+    var urlRadio = "https://s3.free-shoutcast.com:18094/;";
+
     function togglePlay() {
         if (audio.paused) {
-            // Ponemos la URL justo al pulsar para forzar al navegador a activarlo
+            // Forzamos explícitamente el formato y recargamos antes de reproducir
+            audio.type = "audio/mpeg";
             audio.src = urlRadio;
+            audio.load();
             
             var playPromise = audio.play();
             
@@ -337,7 +340,8 @@
             }
         } else {
             audio.pause();
-            audio.src = ""; // Reseteamos la conexión al apagar
+            audio.src = ""; // Reseteamos la dirección para liberar la conexión activa
+            audio.removeAttribute('src');
             playBtn.classList.remove('playing');
             playBtn.innerText = "ENCENDER";
             statusText.innerText = "Consola apagada. Pulsa ENCENDER para conectar.";
