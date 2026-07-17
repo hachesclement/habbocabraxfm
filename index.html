@@ -1,126 +1,357 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Web de Habbo</title>
+    <title>Habbo CabraX FM</title>
     <style>
-        /* Fondo difuminado con imagen clásica de Habbo */
+        /* ESTILO GENERAL RETRO HABBO SÓLIDO */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Volter, Verdana, Geneva, sans-serif; image-rendering: pixelated; }
+
+        @font-face {
+            font-family: 'Volter';
+            src: url('https://fonts.cdnfonts.com/s/16231/Volter__28Goldfish_29.woff') format('woff');
+        }
+
         body {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
+            background-color: #316c95; /* Azul oscuro corporativo Habbo */
+            color: #000;
+            padding: 40px 10px;
+            font-size: 11px;
+            min-height: 100vh;
+        }
+
+        .contenedor {
+            max-width: 900px;
+            margin: 0 auto;
+            border: 2px solid #000;
+            border-radius: 4px;
+            box-shadow: 0px 4px 20px rgba(0,0,0,0.6);
+            overflow: hidden;
+            background: #e3eff5; /* Ventana Habbo */
+        }
+
+        .banner { 
+            background: #121212; 
+            border-bottom: 2px solid #000; 
+            text-align: center; 
+        }
+        .banner img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+
+        /* PESTAÑAS ESTILO INTERFAZ */
+        .menu {
+            background: #c3dbe7;
+            padding: 8px 10px 0 10px;
+            display: flex;
+            gap: 4px;
+            border-bottom: 2px solid #000;
+        }
+
+        .menu a {
+            color: #2b2b2b; 
+            text-decoration: none; 
+            font-size: 11px; 
+            font-weight: bold;
+            padding: 6px 14px; 
+            background: #9fc1d4; 
+            border-radius: 4px 4px 0 0;
+            border: 2px solid #000; 
+            border-bottom: none; 
+            display: inline-block;
+        }
+
+        .menu a.active { 
+            background: #e3eff5; 
+            color: #000;
+            position: relative;
+            top: 2px;
+            padding-bottom: 8px;
+        }
+
+        .panel { padding: 15px; }
+        .zona-radio { display: flex; gap: 15px; }
+
+        /* VISTAS DE BLOQUES */
+        .bloque { 
+            background: #ffffff; 
+            border: 2px solid #000; 
+            border-radius: 5px; 
+            flex: 1; 
+            overflow: hidden; 
+            box-shadow: inset -2px -2px 0px #dedede;
+        }
+        .radio { flex: 1.4; }
+        .dj { flex: 1; }
+
+        .titulo {
+            background: #739cb3;
+            color: #fff;
+            padding: 8px 12px; 
+            border-bottom: 2px solid #000; 
+            font-size: 11px; 
+            font-weight: bold;
+            text-shadow: 1px 1px 0px rgba(0,0,0,0.5);
+        }
+        .radio .titulo { background: #b13d3d; }
+        .dj .titulo { background: #628c3c; }
+
+        .cuerpo { padding: 15px; }
+
+        /* ========================================================
+           CONSOLA CLÁSICA AMARILLA DE HABBO RECUPERADA
+           ======================================================== */
+        .consola-habbo {
+            background: #f7d117; /* El amarillo clásico exacto */
+            border: 3px solid #000;
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: inset -4px -4px 0px #c2a106, inset 4px 4px 0px #ffe863, 0px 4px 10px rgba(0,0,0,0.3);
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Arial', sans-serif;
-            background: url('https://images.habbo.com/c_images/reception/reception_wildwildwest_background.png') no-repeat center center fixed;
-            background-size: cover;
+            gap: 12px;
             position: relative;
-            overflow: hidden;
         }
 
-        /* Capa oscura y difuminada encima del fondo para que resalte la web */
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.6); /* Oscurece el fondo */
-            backdrop-filter: blur(8px); /* Difumina el fondo */
-            z-index: 1;
+        /* Pantalla interna gris oscuro */
+        .consola-pantalla {
+            background: #3a3d40;
+            border: 3px solid #000;
+            border-radius: 6px;
+            padding: 10px;
+            min-height: 80px;
+            box-shadow: inset 2px 2px 0px #222;
+            color: #fff;
+            font-size: 11px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        /* Contenedor principal de la web */
-        .main-container {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            background: rgba(20, 20, 20, 0.85);
-            padding: 40px;
-            border-radius: 20px;
-            border: 2px solid #00ff88;
-            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
-            width: 80%;
-            max-width: 500px;
-        }
-
-        /* TÍTULO NEÓN: Brillo que cambia de color suavemente */
-        h1 {
-            font-size: 32px;
+        .consola-header-info {
+            border-bottom: 1px dashed #6b7278;
+            padding-bottom: 4px;
+            margin-bottom: 6px;
+            color: #ffe600;
             font-weight: bold;
             text-transform: uppercase;
+        }
+
+        .consola-msg {
             color: #fff;
-            margin-bottom: 30px;
-            animation: neonGlow 6s infinite alternate;
+            line-height: 1.3;
         }
 
-        @keyframes neonGlow {
-            0% {
-                text-shadow: 0 0 5px #fff, 0 0 10px #00ff88, 0 0 20px #00ff88, 0 0 40px #00ff88;
-            }
-            50% {
-                text-shadow: 0 0 5px #fff, 0 0 10px #00e1ff, 0 0 20px #00e1ff, 0 0 40px #00e1ff;
-            }
-            100% {
-                text-shadow: 0 0 5px #fff, 0 0 10px #ff007f, 0 0 20px #ff007f, 0 0 40px #ff007f;
-            }
-        }
-
-        /* MENÚ CENTRADO Y LLAMATIVO */
-        .nav-menu {
+        /* Zona inferior de mandos / botones */
+        .consola-controles {
             display: flex;
-            justify-content: center;
-            gap: 15px; /* Espacio entre botones */
-            margin-top: 20px;
+            justify-content: space-between;
+            align-items: center;
+            background: #e2be0f;
+            padding: 8px;
+            border: 2px solid #000;
+            border-radius: 6px;
         }
 
-        /* Estilo de los botones del menú */
-        .nav-btn {
-            display: inline-block;
-            text-decoration: none;
+        /* Botón de encendido/play estilo botón físico Habbo */
+        .btn-consola-play {
+            background: #628c3c;
             color: #fff;
-            font-size: 16px;
+            border: 2px solid #000;
+            border-bottom: 4px solid #3d5924;
+            border-radius: 4px;
+            font-size: 11px;
             font-weight: bold;
-            padding: 12px 24px;
-            border: 2px solid #00ff88;
-            border-radius: 50px; /* Botones ovalados modernos */
-            background: transparent;
-            transition: all 0.3s ease;
-            box-shadow: inset 0 0 0 0 #00ff88;
+            padding: 6px 16px;
+            cursor: pointer;
+            text-shadow: 1px 1px 0px #000;
         }
 
-        /* Efecto al pasar el ratón por encima de los botones */
-        .nav-btn:hover {
+        .btn-consola-play:active {
+            border-bottom-width: 2px;
+            transform: translateY(2px);
+        }
+
+        .btn-consola-play.playing {
+            background: #b13d3d;
+            border-bottom-color: #732424;
+        }
+
+        /* Control de volumen integrado */
+        .consola-volumen {
+            display: flex;
+            align-items: center;
+            gap: 6px;
             color: #000;
-            background: #00ff88;
-            box-shadow: 0 0 15px #00ff88;
-            transform: scale(1.05); /* Se hace un pelín más grande */
+            font-weight: bold;
+        }
+
+        .consola-slider {
+            -webkit-appearance: none;
+            width: 80px;
+            height: 8px;
+            background: #3a3d40;
+            border: 2px solid #000;
+            outline: none;
+        }
+
+        .consola-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 10px;
+            height: 14px;
+            background: #fff;
+            border: 2px solid #000;
             cursor: pointer;
         }
 
-        /* Un color diferente para el Panel DJ para que resalte más */
-        .btn-dj {
-            border-color: #ff007f;
+        /* DETALLES DE TEXTO INTERNOS */
+        .dj-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-align: left;
+            background: #f7f9fa;
+            border: 1px solid #b7c7d1;
+            padding: 10px;
+            border-radius: 4px;
         }
-        .btn-dj:hover {
-            background: #ff007f;
-            box-shadow: 0 0 15px #ff007f;
+
+        .habbo-avatar {
+            width: 40px;
+            height: 40px;
+            background: url('https://www.habbo.es/habbo-imaging/avatarimage?user=CabraX&direction=2&head_direction=2&gesture=sml&size=m') no-repeat center;
+            background-size: contain;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            border-radius: 3px;
         }
+
+        .footer { 
+            background: #9fc1d4; 
+            text-align: center; 
+            padding: 10px; 
+            font-size: 11px; 
+            color: #2b2b2b; 
+            border-top: 2px solid #000;
+            font-weight: bold;
+        }
+
+        @media(max-width:768px){ .zona-radio { flex-direction: column; } }
     </style>
 </head>
+
 <body>
 
-    <div class="main-container">
-        <!-- Título con luces neón -->
-        <h1>Bienvenidos</h1>
-        
-        <!-- Menú centrado y llamativo -->
-        <div class="nav-menu">
-            <a href="#" class="nav-btn">Inicio</a>
-            <a href="#" class="nav-btn btn-dj">Panel DJ</a>
+<div class="contenedor">
+    <!-- BANNER -->
+    <div class="banner">
+        <img src="banner.png" alt="Habbo CabraX FM" onerror="this.src='https://i.imgur.com/LNZT1vH.png';">
+    </div>
+
+    <!-- MENÚ -->
+    <div class="menu">
+        <a href="index.html" class="active">🏠 INICIO</a>
+        <a href="panel.html">🎙 PANEL DJ</a>
+    </div>
+
+    <!-- CONTENIDO -->
+    <div class="panel">
+        <div class="zona-radio">
+            
+            <!-- REPRODUCTOR CON CONSOLA HABBO -->
+            <div class="bloque radio">
+                <div class="titulo">📻 TRANSMISIÓN</div>
+                <div class="cuerpo">
+                    
+                    <!-- CONSOLA AMARILLA RETRO ORIGINAL -->
+                    <div class="consola-habbo">
+                        <div class="consola-pantalla">
+                            <div>
+                                <div class="consola-header-info">Habbo Consola v1.0</div>
+                                <div class="consola-msg" id="stream-status">Tienes (1) mensaje nuevo: "Consola apagada. Pulsa ENCENDER para conectar."</div>
+                            </div>
+                        </div>
+                        
+                        <div class="consola-controles">
+                            <!-- Botón verde original de encendido -->
+                            <button class="btn-consola-play" id="playBtn" onclick="togglePlay()">ENCENDER</button>
+                            
+                            <!-- Control deslizante original -->
+                            <div class="consola-volumen">
+                                <span>Vol:</span>
+                                <input type="range" class="consola-slider" id="volumeControl" min="0" max="1" step="0.1" value="0.5" oninput="changeVolume(this.value)">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ELEMENTO DE AUDIO LIMPIO -->
+                    <audio id="habboAudio"></audio>
+
+                </div>
+            </div>
+
+            <!-- DJ -->
+            <div class="bloque dj">
+                <div class="titulo">👤 DJ MANAGER</div>
+                <div class="cuerpo">
+                    <div class="dj-info">
+                        <div class="habbo-avatar"></div>
+                        <div>
+                            <strong style="color: #000; font-size: 12px;">DJ CabraX</strong>
+                            <p style="color: #666; margin-top: 2px;">● EMITIENDO EN VIVO</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
+
+    <div class="footer">Habbo CabraX FM © 2026 - Conectando píxeles.</div>
+</div>
+
+<script>
+    var audio = document.getElementById('habboAudio');
+    var playBtn = document.getElementById('playBtn');
+    var statusText = document.getElementById('stream-status');
+    audio.volume = 0.5;
+
+    // Enlace con el truco clásico del punto y coma para forzar transmisiones SHOUTcast
+    var urlRadio = "https://s3.free-shoutcast.com:18094/;";
+
+    function togglePlay() {
+        if (audio.paused) {
+            // Forzamos explícitamente el formato y recargamos antes de reproducir
+            audio.type = "audio/mpeg";
+            audio.src = urlRadio;
+            audio.load();
+            
+            var playPromise = audio.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    playBtn.classList.add('playing');
+                    playBtn.innerText = "APAGAR";
+                    statusText.innerHTML = "<span style='color: #00ff00; font-weight: bold;'>● LIVE:</span> Conectado a CabraX FM. ¡Disfruta de la música!";
+                }).catch(error => {
+                    console.log("Error de reproducción:", error);
+                    statusText.innerText = "Error al conectar. Por favor, haz clic otra vez.";
+                });
+            }
+        } else {
+            audio.pause();
+            audio.src = ""; // Reseteamos la dirección para liberar la conexión activa
+            audio.removeAttribute('src');
+            playBtn.classList.remove('playing');
+            playBtn.innerText = "ENCENDER";
+            statusText.innerText = "Consola apagada. Pulsa ENCENDER para conectar.";
+        }
+    }
+
+    function changeVolume(val) { 
+        audio.volume = val; 
+    }
+</script>
 
 </body>
 </html>
