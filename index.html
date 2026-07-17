@@ -314,27 +314,37 @@
     var audio = document.getElementById('habboAudio');
     var playBtn = document.getElementById('playBtn');
     var statusText = document.getElementById('stream-status');
+    
+    // Dejamos el enlace fijo y seguro aquí arriba
+    var streamUrl = "https://27153.live.streamtheworld.com/LOS40_SC";
     audio.volume = 0.5;
 
     function togglePlay() {
-        try {
-            if (audio.paused) {
-                // El truco del "nocache" obliga al navegador a buscar la música fresca en internet
-                audio.src = "https://stream.tomorrowland.com/wm-live-320.mp3?nocache=" + Date.now();
-                audio.play();
-                
-                playBtn.classList.add('playing');
-                playBtn.innerText = "APAGAR";
-                statusText.innerHTML = "<span style='color: #00ff00; font-weight: bold;'>● LIVE:</span> Conectado a la señal de CabraX FM. ¡Disfruta de la música!";
-            } else {
-                audio.pause();
-                audio.src = ""; 
-                playBtn.classList.remove('playing');
-                playBtn.innerText = "ENCENDER";
-                statusText.innerText = "Consola apagada. Pulsa ENCENDER para conectar la señal.";
+        if (audio.paused) {
+            // Si no tiene el enlace puesto, se lo asignamos con el truco anti-caché
+            if (!audio.src || audio.src === window.location.href || audio.src === "") {
+                audio.src = streamUrl + "?nocache=" + Date.now();
             }
-        } catch (e) {
-            statusText.innerText = "Error crítico: " + e.message;
+            
+            audio.play()
+                .then(() => {
+                    playBtn.classList.add('playing');
+                    playBtn.innerText = "APAGAR";
+                    statusText.innerHTML = "<span style='color: #00ff00; font-weight: bold;'>● LIVE:</span> Conectado a la señal de CabraX FM. ¡Disfruta de la música!";
+                })
+                .catch(error => {
+                    console.log("Error al reproducir:", error);
+                    statusText.innerText = "Error de conexión. Inténtalo de nuevo.";
+                });
+
+        } else {
+            // Para apagar de forma segura sin romper el botón, pausamos y rebobinamos
+            audio.pause();
+            audio.currentTime = 0; 
+            
+            playBtn.classList.remove('playing');
+            playBtn.innerText = "ENCENDER";
+            statusText.innerText = "Consola apagada. Pulsa ENCENDER para conectar la señal.";
         }
     }
 
