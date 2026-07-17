@@ -268,7 +268,7 @@
                         <div class="consola-pantalla">
                             <div>
                                 <div class="consola-header-info">Habbo Consola v1.0</div>
-                                <div class="consola-msg" id="stream-status">Tienes (1) mensaje nuevo: "Radio offline. Esperando señal del DJ..."</div>
+                                <div class="consola-msg" id="stream-status">Tienes (1) mensaje nuevo: "Consola apagada. Pulsa ENCENDER para conectar la señal."</div>
                             </div>
                         </div>
                         
@@ -284,8 +284,8 @@
                         </div>
                     </div>
 
-                    <!-- AUDIO ELEMENT -->
-                    <audio id="habboAudio" src=""></audio>
+                    <!-- AUDIO ELEMENT (ENLACE CARGADO DIRECTAMENTE) -->
+                    <audio id="habboAudio" src="https://icecast.vrtnws.be/vrtnws-radio1-high.mp3"></audio>
 
                 </div>
             </div>
@@ -298,7 +298,7 @@
                         <div class="habbo-avatar"></div>
                         <div>
                             <strong style="color: #000; font-size: 12px;">DJ CabraX</strong>
-                            <p style="color: #666; margin-top: 2px;">● EMITIENDO EN VIVO</p>
+                            <p style="color: #628c3c; margin-top: 2px; font-weight: bold;">● EMITIENDO EN VIVO</p>
                         </div>
                     </div>
                 </div>
@@ -317,22 +317,21 @@
     audio.volume = 0.5;
 
     function togglePlay() {
-        if (audio.getAttribute('src') === "") {
-            alert("¡Consola conectada! Pon el link .mp3 de tu streaming en el código para empezar a emitir.");
-            return;
-        }
         if (audio.paused) {
             audio.load(); 
             audio.play().then(() => {
                 playBtn.classList.add('playing');
                 playBtn.innerText = "APAGAR";
-                statusText.innerHTML = "<span style='color: #00ff00;'>● LIVE:</span> Conectado al stream de CabraX. ¡Disfruta de la música!";
-            }).catch(error => { console.log("Error:", error); });
+                statusText.innerHTML = "<span style='color: #00ff00; font-weight: bold;'>● LIVE:</span> Conectado a la señal de CabraX FM. ¡Disfruta de la música!";
+            }).catch(error => { 
+                console.log("Error:", error); 
+                statusText.innerText = "Error de conexión. Inténtalo de nuevo.";
+            });
         } else {
             audio.pause();
             playBtn.classList.remove('playing');
             playBtn.innerText = "ENCENDER";
-            statusText.innerText = "Consola en pausa. Señal en espera...";
+            statusText.innerText = "Consola apagada. Pulsa ENCENDER para conectar la señal.";
         }
     }
 
