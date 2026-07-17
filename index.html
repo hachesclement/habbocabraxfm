@@ -318,17 +318,19 @@
 
     function togglePlay() {
         if (audio.paused) {
-            audio.load(); 
-            audio.play().then(() => {
-                playBtn.classList.add('playing');
-                playBtn.innerText = "APAGAR";
-                statusText.innerHTML = "<span style='color: #00ff00; font-weight: bold;'>● LIVE:</span> Conectado a la señal de CabraX FM. ¡Disfruta de la música!";
-            }).catch(error => { 
-                console.log("Error:", error); 
-                statusText.innerText = "Error de conexión. Inténtalo de nuevo.";
-            });
+            // Asignamos el enlace dinámicamente para romper el bloqueo del navegador
+            if (!audio.src || audio.src === window.location.href) {
+                audio.src = "https://stream.tomorrowland.com/wm-live-320.mp3";
+            }
+            
+            audio.play();
+            playBtn.classList.add('playing');
+            playBtn.innerText = "APAGAR";
+            statusText.innerHTML = "<span style='color: #00ff00; font-weight: bold;'>● LIVE:</span> Conectado a la señal de CabraX FM. ¡Disfruta de la música!";
         } else {
             audio.pause();
+            // Vaciamos el src al apagar para que no siga consumiendo datos en segundo plano
+            audio.src = ""; 
             playBtn.classList.remove('playing');
             playBtn.innerText = "ENCENDER";
             statusText.innerText = "Consola apagada. Pulsa ENCENDER para conectar la señal.";
@@ -337,6 +339,3 @@
 
     function changeVolume(val) { audio.volume = val; }
 </script>
-
-</body>
-</html>
